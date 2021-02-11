@@ -1,5 +1,6 @@
 package git_collab.practice_3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class MCQ extends Question {
@@ -15,8 +16,8 @@ public abstract class MCQ extends Question {
 		this.options = options;
 	}
 
-	public List<String> getOptions() {
-		return options;
+	public ArrayList<String> getOptions() {
+		return (ArrayList<String>) options;
 	}
 
 	public void setOptions(List<String> options) {
