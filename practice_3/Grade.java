@@ -1,56 +1,35 @@
 package git_collab.practice_3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Grade {
 	
-	Student student;
-	double totalMarks;
+	private List<Quiz> quizzes;
 	
-	public Grade() {}
-	
-	public Grade(Student student, double totalMarks) {
-		super();
-		this.student = student;
-		this.totalMarks = totalMarks;
-	}
-
-	public Student getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}
-
-	public double getTotalMarks() {
-		return totalMarks;
-	}
-
-	public void setTotalMarks(double totalMarks) {
-		this.totalMarks = totalMarks;
-	}
-
-	@Override
-	public String toString() {
-		return "Grades [student=" + student + ", totalMarks=" + totalMarks + "]";
+	public Grade() {
+		quizzes = new ArrayList<>();
 	}
 	
-	public String overallGrade(Student s, double totalMarks) {
-		if(totalMarks > 90) {
-			return "A";
-		}
-		else if(totalMarks > 80) {
-			return "B";
-		}
-		else if(totalMarks > 70) {
-			return "C";
-		}
-		else if(totalMarks > 60) {
-			return "D";
-		}
-		else {
-			return "FAIL";
-		}
+	
+	
+	
+	public List<Quiz> getQuizzes() {
+		return quizzes;
 	}
+
+
+
+	public void setQuizzes(List<Quiz> quizzes) {
+		this.quizzes = quizzes;
+	}
+
+	public void addQuiz(Quiz quiz)
+	{
+		quizzes.add(quiz);
+	}
+
+	
 	
 
 }
