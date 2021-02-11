@@ -24,6 +24,4 @@ public abstract class MCQ extends Question {
 		this.options = options;
 	}
 	
-	
-	
 }
