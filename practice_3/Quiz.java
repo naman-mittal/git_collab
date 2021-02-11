@@ -1,49 +1,28 @@
 package git_collab.practice_3;
 
-import java.util.List;
+import java.util.HashMap;
 
 public class Quiz {
-	List<String> fillUpsAns;
-	List<String> mcqAns;
-	List<Integer> numAns;
+	
+	private HashMap<Integer, Question> question;
 	
 	public Quiz() {}
-	
-	public Quiz(List<String> fillUpsAns, List<String> mcqAns, List<Integer> numAns) {
+
+	public Quiz(HashMap<Integer, Question> question) {
 		super();
-		this.fillUpsAns = fillUpsAns;
-		this.mcqAns = mcqAns;
-		this.numAns = numAns;
+		this.question = question;
 	}
 
-	public List<String> getFillUpsAns() {
-		return fillUpsAns;
+	public HashMap<Integer, Question> getQuestion() {
+		return question;
 	}
 
-	public void setFillUpsAns(List<String> fillUpsAns) {
-		this.fillUpsAns = fillUpsAns;
-	}
-
-	public List<String> getMcqAns() {
-		return mcqAns;
-	}
-
-	public void setMcqAns(List<String> mcqAns) {
-		this.mcqAns = mcqAns;
-	}
-
-	public List<Integer> getNumAns() {
-		return numAns;
-	}
-
-	public void setNumAns(List<Integer> numAns) {
-		this.numAns = numAns;
+	public void setQuestion(HashMap<Integer, Question> question) {
+		this.question = question;
 	}
 	
-//	public double totalMarks(Quiz q) {
-//		
-//	}
-	
-	
+	public void addQuestion(int key, Question q) {
+		question.put(key, q);		
+	}
 
 }
