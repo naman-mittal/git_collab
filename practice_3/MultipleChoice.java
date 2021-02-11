@@ -1,5 +1,6 @@
 package git_collab.practice_3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MultipleChoice extends MCQ {
@@ -16,7 +17,7 @@ public class MultipleChoice extends MCQ {
 	}
 
 	public List<String> getAnswers() {
-		return answers;
+		return  answers;
 	}
 
 	public void setAnswers(List<String> answers) {

@@ -7,6 +7,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Quiz quiz = new Quiz();
+		QuizTaker quizTaker = new QuizTaker();
+		
 		
 		Question q1 = new FillInTheBlank(101, "Java is a _____ language", "Programming");
 		
@@ -21,6 +23,16 @@ public class Main {
 		
 		Question q6 = new Numeric(106, "What is square root of 5 ? ", "2.23");
 		
+		quiz.addQuestion(q1);
+		quiz.addQuestion(q2);
+		quiz.addQuestion(q3);
+		quiz.addQuestion(q4);
+		quiz.addQuestion(q5);
+		quiz.addQuestion(q6);
+		
+		quizTaker.takeQuiz(quiz);
+		
+		System.out.println("Score = " + quizTaker.getScore()+"/"+quiz.getQuestions().size());
 		
 	}
 

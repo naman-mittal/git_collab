@@ -16,8 +16,8 @@ public abstract class MCQ extends Question {
 		this.options = options;
 	}
 
-	public ArrayList<String> getOptions() {
-		return (ArrayList<String>) options;
+	public List<String> getOptions() {
+		return  options;
 	}
 
 	public void setOptions(List<String> options) {

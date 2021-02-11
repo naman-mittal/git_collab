@@ -6,7 +6,9 @@ public class Quiz {
 	
 	private HashMap<Integer, Question> questions;
 	
-	public Quiz() {}
+	public Quiz() {
+		questions = new HashMap<>();
+	}
 
 	public Quiz(HashMap<Integer, Question> question) {
 		super();
@@ -21,8 +23,8 @@ public class Quiz {
 		this.questions = questions;
 	}
 	
-	public void addQuestion(int key, Question q) {
-		questions.put(key, q);		
+	public void addQuestion(Question q) {
+		questions.put(q.getId(), q);		
 	}
 
 }
