@@ -1,4 +1,4 @@
-package practice_3;
+package git_collab.practice_3;
 
 public class Numeric extends Question {
 
