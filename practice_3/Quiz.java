@@ -4,25 +4,25 @@ import java.util.HashMap;
 
 public class Quiz {
 	
-	private HashMap<Integer, Question> question;
+	private HashMap<Integer, Question> questions;
 	
 	public Quiz() {}
 
 	public Quiz(HashMap<Integer, Question> question) {
 		super();
-		this.question = question;
+		this.questions = question;
 	}
 
-	public HashMap<Integer, Question> getQuestion() {
-		return question;
+	public HashMap<Integer, Question> getQuestions() {
+		return questions;
 	}
 
-	public void setQuestion(HashMap<Integer, Question> question) {
-		this.question = question;
+	public void setQuestions(HashMap<Integer, Question> questions) {
+		this.questions = questions;
 	}
 	
 	public void addQuestion(int key, Question q) {
-		question.put(key, q);		
+		questions.put(key, q);		
 	}
 
 }
