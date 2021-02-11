@@ -7,8 +7,8 @@ public class FillInTheBlank extends Question {
 		super();
 	}
 
-	public FillInTheBlank(String question, String answer) {
-		super(question,answer);
+	public FillInTheBlank(Integer id, String question, String answer) {
+		super(id,question,answer);
 
 	}
 	

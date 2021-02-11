@@ -10,8 +10,8 @@ public abstract class MCQ extends Question {
 		super();
 	}
 
-	public MCQ(String question, String answer, List<String> options) {
-		super(question, answer);
+	public MCQ(Integer id,String question, String answer, List<String> options) {
+		super(id,question, answer);
 		this.options = options;
 	}
 

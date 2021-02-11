@@ -9,8 +9,8 @@ public class SingleChoice extends MCQ {
 		
 	}
 
-	public SingleChoice(String question, String answer, List<String> options) {
-		super(question, answer, options);
+	public SingleChoice(Integer id,String question, String answer, List<String> options) {
+		super(id,question, answer, options);
 		
 	}
 

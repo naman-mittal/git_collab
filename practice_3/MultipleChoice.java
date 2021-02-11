@@ -10,8 +10,8 @@ public class MultipleChoice extends MCQ {
 		super();
 	}
 
-	public MultipleChoice(String question, List<String> options, List<String> answers) {
-		super(question, "", options);
+	public MultipleChoice(Integer id,String question, List<String> options, List<String> answers) {
+		super(id,question, "", options);
 		this.answers = answers;
 	}
 
