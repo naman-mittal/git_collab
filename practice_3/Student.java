@@ -2,8 +2,9 @@ package git_collab.practice_3;
 
 public class Student {
 	
-	int rollNo;
-	String name;
+	private int rollNo;
+	private String name;
+	private Grade grade;
 	
 	public Student() {}
 	
@@ -11,6 +12,14 @@ public class Student {
 		super();
 		this.rollNo = rollNo;
 		this.name = name;
+	}
+
+	public Grade getGrade() {
+		return grade;
+	}
+
+	public void setGrade(Grade grade) {
+		this.grade = grade;
 	}
 
 	public int getRollNo() {
@@ -31,8 +40,10 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [rollNo=" + rollNo + ", name=" + name + "]";
+		return "Student [rollNo=" + rollNo + ", name=" + name + ", grade=" + grade + "]";
 	}
+
+	
 	
 	
 	

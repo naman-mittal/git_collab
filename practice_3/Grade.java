@@ -1,13 +1,13 @@
 package git_collab.practice_3;
 
-public class Grades {
+public class Grade {
 	
 	Student student;
 	double totalMarks;
 	
-	public Grades() {}
+	public Grade() {}
 	
-	public Grades(Student student, double totalMarks) {
+	public Grade(Student student, double totalMarks) {
 		super();
 		this.student = student;
 		this.totalMarks = totalMarks;
