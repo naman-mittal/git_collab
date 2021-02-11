@@ -2,6 +2,7 @@ package git_collab.practice_3;
 
 public abstract class Question {
 
+	private Integer id;
 	private String question;
 	private String answer;
 	
@@ -30,6 +31,7 @@ public abstract class Question {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
+	
 	
 	
 	
