@@ -1,4 +1,4 @@
-package practice_3;
+package git_collab.practice_3;
 
 public class FillInTheBlank extends Question {
 
@@ -7,8 +7,8 @@ public class FillInTheBlank extends Question {
 		super();
 	}
 
-	public FillInTheBlank(String question, String answer) {
-		super(question,answer);
+	public FillInTheBlank(Integer id, String question, String answer) {
+		super(id,question,answer);
 
 	}
 	

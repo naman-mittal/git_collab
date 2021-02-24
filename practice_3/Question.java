@@ -1,7 +1,8 @@
-package practice_3;
+package git_collab.practice_3;
 
 public abstract class Question {
 
+	private Integer id;
 	private String question;
 	private String answer;
 	
@@ -9,8 +10,9 @@ public abstract class Question {
 		super();
 	}
 
-	public Question(String question, String answer) {
+	public Question(Integer id,String question, String answer) {
 		super();
+		this.id = id;
 		this.question = question;
 		this.answer = answer;
 	}
@@ -30,6 +32,15 @@ public abstract class Question {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	
 	
 	
