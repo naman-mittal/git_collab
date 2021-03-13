@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cap.exs.entities.Project; 
 
+//Project service methods
 public interface IProjectService {
 
 	public List<Project> getAllProject();

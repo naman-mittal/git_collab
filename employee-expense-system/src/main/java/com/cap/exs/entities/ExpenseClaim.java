@@ -8,45 +8,53 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.cap.exs.exceptions.InvalidEndDateException;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class ExpenseClaim {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name="expenseClaim_sequence",allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO,generator = "expenseClaim_sequence")
 	private int expenseCodeId;
 	
-	@NotNull
+	@Positive
 	private double expenseAmount;
 	
+	@NotNull
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate startDate;
 	
+	@NotNull
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate endDate;
 	
+	@NotNull
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Expense expense;
 	
+	@NotNull
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Project project;
 	
+	@NotNull
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Employee employee;
 	
 	public ExpenseClaim() {}
 	
-	public ExpenseClaim(int expenseCodeId, double expenseAmount, LocalDate startDate, LocalDate endDate,
+	public ExpenseClaim(double expenseAmount, LocalDate startDate, LocalDate endDate,
 			Expense expense, Project project, Employee employee) {
 		super();
-		this.expenseCodeId = expenseCodeId;
 		this.expenseAmount = expenseAmount;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -84,7 +92,11 @@ public class ExpenseClaim {
 	}
 
 	public void setEndDate(LocalDate endDate) {
-		this.endDate = endDate;
+		if(endDate.isAfter(startDate)) {
+	           this.endDate = endDate;
+	         } else {
+	           throw new InvalidEndDateException("End date should be the date after start date");
+	         }
 	}
 
 	public Expense getExpense() {

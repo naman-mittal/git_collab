@@ -6,27 +6,50 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.cap.exs.exceptions.InvalidEndDateException;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Project {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "project_sequence",allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO,generator = "project_sequence")
 	private int projectCode;
+	
+	@NotNull
+	@Size(min = 5,max = 50)
 	private String projectDescription;
+	
+	@NotNull
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate startDate;
+	
+	@NotNull
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate endDate;
 	
+	//Class constructor
 	public Project() {}
 	
-	public Project(int projectCode, String projectDescription, LocalDate startDate, LocalDate endDate) {
+	
+	//Constructor using fields
+	public Project(String projectDescription, LocalDate startDate, LocalDate endDate) {
 		super();
-		this.projectCode = projectCode;
 		this.projectDescription = projectDescription;
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
-
+	
+	/* Getters Setters*/
 	public int getProjectCode() {
 		return projectCode;
 	}
@@ -59,7 +82,12 @@ public class Project {
 	}
 	
 	public void setEndDate(LocalDate endDate) {
-		this.endDate = endDate;
+		if(endDate.isAfter(startDate)) {
+			this.endDate = endDate;
+			}
+		else {
+			throw new InvalidEndDateException("End date should be the date after start date");
+			}
 	}
 
 	

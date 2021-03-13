@@ -1,18 +1,19 @@
 package com.cap.exs.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import com.cap.exs.entities.Expense;
 import com.cap.exs.entities.Project;
+import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
+import com.cap.exs.exceptions.ProjectNotFoundException;
 import com.cap.exs.repos.IProjectRepository;
 import com.cap.exs.service_interfaces.IProjectService;
-import com.cap.exs.exceptions.ExpenseNotFoundException;
-import com.cap.exs.exceptions.ProjectNotFoundException;
 
 
 @Service 
@@ -21,59 +22,78 @@ public class ProjectService implements IProjectService{
 	@Autowired
 	IProjectRepository projectRepository;
 	
+	Logger logger = LoggerFactory.getLogger(ProjectService.class);
+	
+	// Get all projects at once
 	public List<Project> getAllProject(){
-		List<Project> projects = new ArrayList<Project>();
-		projects = projectRepository.findAll();
+		List<Project> projects = projectRepository.findAll();
 		
 		if(projects.isEmpty()) {
-			throw new ProjectNotFoundException("No projects found...");
+			String errorMessage = "No Projects Found";
+			logger.error(errorMessage, ProjectNotFoundException.class);
+			throw new ProjectNotFoundException(errorMessage);
 		}
 		
 		return projects;
 	}
 	
 	
+	// Add project
 	public Project addProject(Project project) {
+		
 		return projectRepository.save(project);
 	}
 	
-//	public List<Project> getAllProjectCode(int Id){}
-	
+
+	// Update project by ID
 	public Project updateProject(Project project) {
+		
+		this.findByCode(project.getProjectCode());
+		
 		return projectRepository.save(project);
 	}
 	
-	
+	// Delete project by ID
 	public Project deleteProjectById(int id) {
-		Project project = projectRepository.findById(id).get();
-		if(project == null) {
-			throw new ProjectNotFoundException("No such project exists...");
+
+		Project project = this.findByCode(id);
+		try {
+			projectRepository.delete(project);
 		}
-		projectRepository.delete(project);
-		return project;	
+		catch(DataIntegrityViolationException  e) {
+			String errorMessage = String.format("Cannot delete! Expense claim exist for project = %s ", project.toString());
+			logger.error(errorMessage, ExpenseClaimAssociatedException.class);
+			throw new ExpenseClaimAssociatedException(errorMessage);
+		}
+		return project;
 	}
 	
+	// Extra method added to delete all projects at once
+	public void deleteAllProject(){
+		projectRepository.deleteAll();
+	}
 	
-//	public void deleteAllProject(){}
-	
-	
+	// Get all project codes at once
 	public List<Integer> getAllProjectCodes(){
-		List<Integer> projectCodes = new ArrayList<Integer>();
-		projectCodes = projectRepository.getAllProjectCodes();
+		List<Integer> projectCodes = projectRepository.getAllProjectCodes();
 		
 		if(projectCodes.isEmpty()) {
-			throw new ProjectNotFoundException("No project code found...");
+			String errorMessage = "No projects found...";
+			logger.error(errorMessage, ProjectNotFoundException.class);
+			throw new ProjectNotFoundException(errorMessage);
 		}
 		
 		return projectCodes;
 	}
 	
-	
+	// Find project by code(ID)
 	public Project findByCode(int projectCode) {
 		Optional<Project> project = projectRepository.findById(projectCode);
 		if(!project.isPresent())
 		{
-			throw new ProjectNotFoundException("No project found with projectCode: " + projectCode);
+			String errorMessage = String.format("no project found with id = %d", projectCode);
+			logger.error(errorMessage, ProjectNotFoundException.class);
+			throw new ProjectNotFoundException(errorMessage);
 		}
 		return project.get();		
 	}

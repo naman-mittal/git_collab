@@ -6,36 +6,66 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import com.cap.exs.validators.Past;
 
 @Entity
+@Table(uniqueConstraints = { 
+	@UniqueConstraint(columnNames = "empEmailId"), 
+	@UniqueConstraint(columnNames = "empPAN") 
+})
 public class Employee {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name="employee_sequence",allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO,generator = "employee_sequence")
 	private int empId;
 	
 	@NotNull
+	@Size(min = 4,max = 20)
+	@Pattern(regexp = "[a-zA-Z]+ [a-zA-Z]+",message = "Name should be in format : [FirstName LastName]")
 	private String empName;
+	
+	@Pattern(regexp = "[A-Z]{5}[0-9]{4}[A-Z]{1}",message = "Invalid")
 	private String empPAN;
+	
+	@Pattern(regexp = "[a-z A-Z]*",message = "Invalid")
+	@Size(min = 4,max = 20)
 	private String empDesignation;
+	
+	@Pattern(regexp = "[a-z A-Z]*",message = "Invalid")
+	@Size(min = 4,max = 20)
 	private String empDomain;
 	
-	@Pattern(regexp = "^(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\\d\\d$", message = "Invalid date of joining.")
+	
+	@NotNull(message = "Employee date of joining cannot be null")
+	@Pattern(regexp = "^(0[1-9]|1[012])/(0[1-9]|[12][0-9]|3[01])/(19|20)\\d\\d$", message = "Invalid date of joining")
+	@Past
 	private String empDOJ;
 	
-	@Pattern(regexp = "^(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\\d\\d$", message = "Invalid date of birth.")
+	
+	@NotNull(message = "Employee date of birth cannot be null")
+	@Pattern(regexp = "^(0[1-9]|1[012])/(0[1-9]|[12][0-9]|3[01])/(19|20)\\d\\d$", message = "Invalid date of birth")
+	@Past
 	private String empDOB;
 	
-	
+	@NotNull
+	@Pattern(regexp = "[0-9]*",message = "Invalid")
+	@Size(min = 4,message="should be greater than equal to 1000")
 	private String empSalary;
 	 
-	
-	@Pattern(regexp = "[A-Za-z0-9]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}", message = "Invalid email address.")
+	@NotNull(message = "Employee email cannot be null")
+	@Pattern(regexp = "[A-Za-z0-9]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}", message = "Invalid email address")
 	private String empEmailId;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@NotNull(message = "LoginDetails cannot be null")
+	@OneToOne(cascade = CascadeType.PERSIST,orphanRemoval = true)
 	private LoginDetails loginDetails;
 
 	
@@ -47,13 +77,11 @@ public class Employee {
 		super();
 	}
 
-	public Employee(String empName, String empPAN, String empDesignation, String empDomain, String empDOJ,
+	public Employee(String empName, String empPAN, String empDOJ,
 			String empDOB, String empSalary, String empEmailId, LoginDetails loginDetails) {
 		super();
 		this.empName = empName;
 		this.empPAN = empPAN;
-		this.empDesignation = empDesignation;
-		this.empDomain = empDomain;
 		this.empDOJ = empDOJ;
 		this.empDOB = empDOB;
 		this.empSalary = empSalary;

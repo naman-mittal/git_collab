@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.cap.exs.entities.Project; 
 
 @Repository
-public interface IProjectRepository extends JpaRepository<Project, Integer>{
+public interface IProjectRepository extends JpaRepository<Project, Integer>{	//Project repo
 	
 	@Query("Select p.projectCode from Project p")
 	public List<Integer> getAllProjectCodes();
