@@ -41,9 +41,9 @@ public class LoginService implements ILoginService{
 	
 	
 	
-public void deleteDetailsById(int Id) {
+public void deleteDetailsById(int id) {
 
-	LoginDetails details = loginRepository.findById(Id);
+	LoginDetails details = loginRepository.findById(id);
 	
 	try
 	{

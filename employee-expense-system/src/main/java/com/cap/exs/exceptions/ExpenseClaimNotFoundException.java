@@ -1,9 +1,17 @@
 package com.cap.exs.exceptions;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+/**
 
-@ResponseStatus(code = HttpStatus.NOT_FOUND)
+Exception to be thrown when a non-existing expense claim is searched.
+
+@since 1.0
+
+@author Harsh Bansal
+@author Ashutosh Upadhyay
+
+*/
+
+@SuppressWarnings("serial")
 public class ExpenseClaimNotFoundException extends RuntimeException {
 	public ExpenseClaimNotFoundException() {
 		super();

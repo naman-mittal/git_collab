@@ -1,9 +1,16 @@
 package com.cap.exs.exceptions;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+/**
 
-@ResponseStatus(code = HttpStatus.CONFLICT)
+Exception to be thrown while when an expense type already exist.
+
+@since 1.0
+
+@author Aman Pratap Singh
+
+*/
+
+@SuppressWarnings("serial")
 public class ExpenseAlreadyExistException extends RuntimeException {
 	
 	public ExpenseAlreadyExistException() {

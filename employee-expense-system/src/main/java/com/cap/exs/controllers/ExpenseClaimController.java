@@ -154,7 +154,7 @@ public class ExpenseClaimController {
 	
 	// Get Expense Claim by Employee's id
 	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER') or hasRole('USER')")
-	@GetMapping("/expenseClaims/employee")
+	@GetMapping("/expenseClaims/employee/{id}")
 	@ApiOperation(value = "Get all Expense Claims by Employee", response = List.class)
 	@ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved all expense claims"),
@@ -164,7 +164,10 @@ public class ExpenseClaimController {
             @ApiResponse(code = 500, message = "Application failed to process the request")
     })
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<ExpenseClaim> getAllClaimsByEmployee(Employee employee){
+	public List<ExpenseClaim> getAllClaimsByEmployee(@PathVariable("id") int empId){
+		
+		Employee employee = new Employee();
+		employee.setEmpId(empId);
 		return expenseClaimService.getAllClaimsByEmployee(employee);
 	}
 	

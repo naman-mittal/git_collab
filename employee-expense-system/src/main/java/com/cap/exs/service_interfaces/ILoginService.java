@@ -10,6 +10,4 @@ public interface ILoginService {
 	
 	public LoginDetails validateUser(LoginDetails details);
 	
-//	public LoginDetails logout(LoginDetails details);
-	
 }

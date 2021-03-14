@@ -1,10 +1,16 @@
 package com.cap.exs.exceptions;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+/**
 
+Exception to be thrown when a project, searched with id,  is not found
 
-@ResponseStatus(code = HttpStatus.NOT_FOUND)
+@since 1.0
+
+@author Ishan Agarwal
+
+*/
+
+@SuppressWarnings("serial")
 public class ProjectNotFoundException extends RuntimeException {
 
 	public ProjectNotFoundException() {

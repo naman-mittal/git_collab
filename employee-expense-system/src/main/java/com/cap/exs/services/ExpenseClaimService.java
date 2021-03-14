@@ -59,8 +59,9 @@ public class ExpenseClaimService implements IExpenseClaimService {
 		
 		if(expenseClaims.isEmpty())
 		{
-			logger.error("No Claims Records Found!!", ExpenseClaimNotFoundException.class);
-			throw new ExpenseClaimNotFoundException("No Claims found!!");
+			String errorMessage = "No Claims Records Found!!";  
+			logger.error(errorMessage, ExpenseClaimNotFoundException.class);
+			throw new ExpenseClaimNotFoundException(errorMessage);
 		}
 		
 		return expenseClaims;
@@ -72,8 +73,9 @@ public class ExpenseClaimService implements IExpenseClaimService {
 		Optional<ExpenseClaim> expenseClaim = expenseClaimRepository.findById(expenseCodeID);
 		if(!expenseClaim.isPresent())
 		{
-			logger.error("No Claims Records Found With Provided Expense ID !!", ExpenseClaimNotFoundException.class);
-			throw new ExpenseClaimNotFoundException("No Claims found with expenseCode ID " + expenseCodeID);
+			String errorMessage = String.format("No Claims Records Found With Provided Expense ID : %d",expenseCodeID);  
+			logger.error(errorMessage, ExpenseClaimNotFoundException.class);
+			throw new ExpenseClaimNotFoundException(errorMessage);
 		}
 		
 		return expenseClaim.get();
@@ -110,7 +112,9 @@ public class ExpenseClaimService implements IExpenseClaimService {
 		List<ExpenseClaim> expenseClaims = expenseClaimRepository.findByEmployee(foundEmployee);		
 		if(expenseClaims.isEmpty())
 		{
-			throw new ExpenseClaimNotFoundException("no Expense claim  found with username = \" + username ");
+			String errorMessage = String.format("no Expense claims  found for employee :  %s", foundEmployee.getEmpName());
+			logger.error(errorMessage,ExpenseClaimNotFoundException.class);
+			throw new ExpenseClaimNotFoundException(errorMessage);
 		}
 		
 		return expenseClaims;
@@ -150,8 +154,10 @@ public class ExpenseClaimService implements IExpenseClaimService {
 		List<ExpenseClaim> claimWithinDates =  expenseClaimRepository.findAllBetweenDates(startDate,endDate);
 		
 		if(claimWithinDates.isEmpty()) {
-			logger.error("No Claims Records Found between Provided Dates!!", ExpenseClaimNotFoundException.class);
-			throw new ExpenseClaimNotFoundException("No Claims found between" + startDate + "and" + endDate );
+			
+			String errorMessage = String.format("No Claim Records Found between %s and %s dates!!", startDate.toString(),endDate.toString()); 
+			logger.error(errorMessage, ExpenseClaimNotFoundException.class);
+			throw new ExpenseClaimNotFoundException(errorMessage);
 		}
 		
 		return claimWithinDates;

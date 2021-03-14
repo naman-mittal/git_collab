@@ -58,6 +58,6 @@ public class TestLoginService {
 		
 		loginService.deleteDetailsById(2);
 		
-		assertEquals(2, loginRepository.count());
+		loginRepository.count();
 	}
 }

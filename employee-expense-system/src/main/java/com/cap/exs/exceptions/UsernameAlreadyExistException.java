@@ -1,9 +1,16 @@
 package com.cap.exs.exceptions;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+/**
 
-@ResponseStatus(code = HttpStatus.CONFLICT)
+Exception to be thrown when a username is already registered for an employee and a new employee tries to use same username.
+
+@since 1.0
+
+@author Naman Mittal
+
+*/
+
+@SuppressWarnings("serial")
 public class UsernameAlreadyExistException extends RuntimeException {
 
 	public UsernameAlreadyExistException() {

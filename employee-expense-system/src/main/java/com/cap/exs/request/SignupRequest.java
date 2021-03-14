@@ -73,16 +73,11 @@ public class SignupRequest {
 		super();
 	}
 
-	public SignupRequest(String name, String doj, String dob, String domain, String designation, String pan,
-			String salary, String email, String username, String password, String role) {
+	public SignupRequest(String name, String doj, String dob, String email, String username, String password, String role) {
 		super();
 		this.name = name;
 		this.doj = doj;
 		this.dob = dob;
-		this.domain = domain;
-		this.designation = designation;
-		this.pan = pan;
-		this.salary = salary;
 		this.email = email;
 		this.username = username;
 		this.password = password;

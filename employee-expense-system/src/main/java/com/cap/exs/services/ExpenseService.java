@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.cap.exs.entities.Expense;
 import com.cap.exs.exceptions.ExpenseAlreadyExistException;
-import com.cap.exs.exceptions.ExpenseAssociatedException;
+import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
 import com.cap.exs.exceptions.ExpenseNotFoundException;
 import com.cap.exs.repos.IExpenseRepository;
 import com.cap.exs.service_interfaces.IExpenseService;
@@ -104,8 +104,8 @@ public class ExpenseService implements IExpenseService {
 			catch(DataIntegrityViolationException e)
 			{
 				String errorMessage = String.format(" Cannot delete! Expense claim exist for expensee = %s", expense.toString());
-				logger.error(errorMessage,ExpenseAssociatedException.class);
-				throw new ExpenseAssociatedException(errorMessage);
+				logger.error(errorMessage,ExpenseClaimAssociatedException.class);
+				throw new ExpenseClaimAssociatedException(errorMessage);
 			}
 			
 			return expense;

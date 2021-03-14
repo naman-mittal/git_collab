@@ -82,7 +82,7 @@ public class TestExpenseClaimService {
 		 project.setProjectCode(100);
 		 expenseClaim.setProject(project);
 		
-		 assertNotNull(expenseClaimService.addExpenseClaim(expenseClaim));
+		expenseClaimService.addExpenseClaim(expenseClaim);
 	}
 	
 	@Test(expected=ExpenseNotFoundException.class)
@@ -92,7 +92,7 @@ public class TestExpenseClaimService {
 		 expense.setExpenseCode(50);
 		 expenseClaim.setExpense(expense);
 		
-		 assertNotNull(expenseClaimService.addExpenseClaim(expenseClaim));
+		 expenseClaimService.addExpenseClaim(expenseClaim);
 	}
 
 //	@Test
@@ -139,7 +139,7 @@ public class TestExpenseClaimService {
 		
 		employee = new Employee();
 		employee.setEmpId(100);
-		assertNotNull(expenseClaimService.getAllClaimsByEmployee(employee));
+		expenseClaimService.getAllClaimsByEmployee(employee);
 	}
 	
 	

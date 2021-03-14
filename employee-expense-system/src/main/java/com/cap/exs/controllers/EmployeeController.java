@@ -28,6 +28,8 @@ import com.cap.exs.entities.ERole;
 import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.LoginDetails;
 import com.cap.exs.entities.Role;
+import com.cap.exs.exceptions.PANAlreadyRegisteredException;
+import com.cap.exs.exceptions.RoleNotFoundException;
 import com.cap.exs.repos.IRoleRepository;
 import com.cap.exs.request.SignupRequest;
 import com.cap.exs.request.UpdateEmployeeRequest;
@@ -55,7 +57,16 @@ public class EmployeeController {
 	@Autowired
 	PasswordEncoder encoder;
 	
-	// Add a new Employee
+	/**
+	 * This method is for signing up
+	 * 
+	 * @param SignupRequest
+	 * @return MessageResponse
+	 * @throws { {@link RoleNotFoundException}
+	 * @throws MethodArgumentNotValidException
+	 * @throws EmailAlreadyRegisteredException
+	 * @throws PANAlreadyRegisteredException
+	 */
 	
 	@PostMapping("/signup")
 	@ResponseStatus(code = HttpStatus.CREATED)
@@ -67,7 +78,7 @@ public class EmployeeController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),
             @ApiResponse(code = 500, message = "Application failed to process the request")
     })
-	public ResponseEntity<?> addEmployee(@ApiParam(name="Signup Request", required = true) @Valid @RequestBody SignupRequest request) {
+	public ResponseEntity<MessageResponse> addEmployee(@ApiParam(name="Signup Request", required = true) @Valid @RequestBody SignupRequest request) {
 		
 		Employee employee = new Employee();
 		LoginDetails loginDetails = new LoginDetails();
@@ -88,28 +99,30 @@ public class EmployeeController {
 		Set<String> strRoles = request.getRoles();
 		Set<Role> roles = new HashSet<>();
 
+		String roleNotFoundMessage = "Error: Role is not found.";
+		
 		if (strRoles == null) {
 			Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					.orElseThrow(() -> new RoleNotFoundException(roleNotFoundMessage));
 			roles.add(userRole);
 		} else {
 			strRoles.forEach(role -> {
 				switch (role) {
 				case "admin":
 					Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+							.orElseThrow(() -> new RoleNotFoundException(roleNotFoundMessage));
 					roles.add(adminRole);
 
 					break;
 				case "manager":
 					Role modRole = roleRepository.findByName(ERole.ROLE_MANAGER)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+							.orElseThrow(() -> new RoleNotFoundException(roleNotFoundMessage));
 					roles.add(modRole);
 
 					break;
 				default:
 					Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+							.orElseThrow(() -> new RoleNotFoundException(roleNotFoundMessage));
 					roles.add(userRole);
 				}
 			});
@@ -124,7 +137,15 @@ public class EmployeeController {
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
 	
-	// Get all the employees
+	/**
+	 * This method is for getting all employees
+	 * 
+	 *@ 
+	 * @return List<Employee>
+	 * @throws EmployeeNotFoundException
+	 * 
+	 */
+	
 	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/employees")
 	@ApiOperation(value = "Get all Employees", response = List.class)

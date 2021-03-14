@@ -1,9 +1,16 @@
 package com.cap.exs.exceptions;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+/**
 
-@ResponseStatus(code = HttpStatus.NOT_FOUND)
+Exception to be thrown when trying to find an employee which does not exist.
+
+@since 1.0
+
+@author Naman Mittal
+
+*/
+
+@SuppressWarnings("serial")
 public class EmployeeNotFoundException extends RuntimeException {
 
 	public EmployeeNotFoundException() {
