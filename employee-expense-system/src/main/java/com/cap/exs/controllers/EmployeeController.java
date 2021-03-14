@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +30,9 @@ import com.cap.exs.entities.ERole;
 import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.LoginDetails;
 import com.cap.exs.entities.Role;
+import com.cap.exs.exceptions.EmailAlreadyRegisteredException;
+import com.cap.exs.exceptions.EmployeeNotFoundException;
+import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
 import com.cap.exs.exceptions.PANAlreadyRegisteredException;
 import com.cap.exs.exceptions.RoleNotFoundException;
 import com.cap.exs.repos.IRoleRepository;
@@ -62,10 +67,10 @@ public class EmployeeController {
 	 * 
 	 * @param SignupRequest
 	 * @return MessageResponse
-	 * @throws { {@link RoleNotFoundException}
-	 * @throws MethodArgumentNotValidException
-	 * @throws EmailAlreadyRegisteredException
-	 * @throws PANAlreadyRegisteredException
+	 * @throws {@link RoleNotFoundException}
+	 * @throws {@link MethodArgumentNotValidException}
+	 * @throws {@link EmailAlreadyRegisteredException}
+	 * @throws {@link PANAlreadyRegisteredException}
 	 */
 	
 	@PostMapping("/signup")
@@ -140,9 +145,8 @@ public class EmployeeController {
 	/**
 	 * This method is for getting all employees
 	 * 
-	 *@ 
 	 * @return List<Employee>
-	 * @throws EmployeeNotFoundException
+	 * @throws @{@link EmployeeNotFoundException}
 	 * 
 	 */
 	
@@ -162,7 +166,15 @@ public class EmployeeController {
 		return employeeService.getEmployees();
 	}
 	
-	// Find an employee by its id
+	/**
+	 * This method is for fetching an employee by its id
+	 * 
+	 * @param empId
+	 * @return Employee
+	 * @throws @{@link EmployeeNotFoundException}
+	 * @throws @{@link ConstraintViolationException}
+	 * 
+	 */
 	
 	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/employee/{id}")
@@ -180,7 +192,16 @@ public class EmployeeController {
 		return employeeService.findByEmployeeCode(empId);		
 	}
 	
-	// delete an employee by its id
+	/**
+	 * This method is for deleting an employee by its id
+	 * 
+	 * @param empId
+	 * @return Employee
+	 * @throws @{@link EmployeeNotFoundException}
+	 * @throws @{@link ExpenseClaimAssociatedException}
+	 * @throws @{@link ConstraintViolationException}
+	 * 
+	 */
 	
 	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/employee/{id}")
@@ -198,7 +219,17 @@ public class EmployeeController {
 		employeeService.deleteEmpById(empId);
 	}
 	
-	// update employee's designation,domain and PAN
+	/**
+	 * This method is for signing up
+	 * 
+	 * @param UpdateEmployeeRequest
+	 * @return Employee
+	 * @throws {@link MethodArgumentNotValidException}
+	 * @throws {@link PANAlreadyRegisteredException}
+	 * @throws {@link EmployeeNotFoundException}
+	 * 
+	 */
+	
 	@PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
 	@PutMapping("/employee")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
@@ -222,7 +253,17 @@ public class EmployeeController {
 		return employeeService.updateEmployee(employee);
 	}
 	
-	// Get employee by its username, password and role
+	/**
+	 * This method is for fetching an employee by userName, password and role
+	 * 
+	 * @param userName
+	 * @param password
+	 * @param role
+	 * @return Employee
+	 * @throws {@link EmployeeNotFoundException}
+	 * 
+	 */
+	
 	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/employee")
 	@ResponseStatus(code = HttpStatus.OK)
@@ -234,9 +275,9 @@ public class EmployeeController {
             @ApiResponse(code = 404, message = "No employee found"),
             @ApiResponse(code = 500, message = "Application failed to process the request")
     })
-	public Employee getDetailsByAll(@ApiParam(name="Employee's username", required = true)@RequestParam(name = "userName") String username,@ApiParam(name="Employee's password", required = true) @RequestParam(name = "password") String password,@ApiParam(name="Employee's role", required = true) @RequestParam(name = "role") String role) {
+	public Employee getDetailsByAll(@ApiParam(name="Employee's username", required = true)@RequestParam(name = "userName") String userName,@ApiParam(name="Employee's password", required = true) @RequestParam(name = "password") String password,@ApiParam(name="Employee's role", required = true) @RequestParam(name = "role") String role) {
 		
-		return employeeService.getDetailsByAll(username, password, role);
+		return employeeService.getDetailsByAll(userName, password, role);
 	}
 	
 	
