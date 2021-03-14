@@ -6,7 +6,7 @@ Exception to be thrown when a username is already registered for an employee and
 
 @since 1.0
 
-@author Naman Mittal
+@author Himanshu Nagar
 
 */
 

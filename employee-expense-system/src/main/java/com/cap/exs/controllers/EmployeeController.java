@@ -120,9 +120,9 @@ public class EmployeeController {
 
 					break;
 				case "manager":
-					Role modRole = roleRepository.findByName(ERole.ROLE_MANAGER)
+					Role managerRole = roleRepository.findByName(ERole.ROLE_MANAGER)
 							.orElseThrow(() -> new RoleNotFoundException(roleNotFoundMessage));
-					roles.add(modRole);
+					roles.add(managerRole);
 
 					break;
 				default:
@@ -230,7 +230,7 @@ public class EmployeeController {
 	 * 
 	 */
 	
-	@PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+	@PreAuthorize("hasRole('ADMIN') or hasRole('USER') or hasRole('MANAGER')")
 	@PutMapping("/employee")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@ApiOperation(value = "Update the employee", response = Employee.class)

@@ -6,7 +6,7 @@ Exception to be thrown when a project, searched with id,  is not found
 
 @since 1.0
 
-@author Ishan Agarwal
+@author Ishan Agrawal
 
 */
 

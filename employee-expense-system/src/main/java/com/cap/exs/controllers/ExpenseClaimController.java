@@ -9,6 +9,7 @@ import javax.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,6 +29,7 @@ import com.cap.exs.entities.ExpenseClaim;
 import com.cap.exs.entities.Project;
 import com.cap.exs.request.AddExpenseClaimRequest;
 import com.cap.exs.request.UpdateExpenseClaimRequest;
+import com.cap.exs.response.MessageResponse;
 import com.cap.exs.services.ExpenseClaimService;
 
 import io.swagger.annotations.Api;
@@ -170,6 +172,25 @@ public class ExpenseClaimController {
 		employee.setEmpId(empId);
 		return expenseClaimService.getAllClaimsByEmployee(employee);
 	}
+	
+	// Approve Expense Claim
+		@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
+		@PutMapping("/expenseClaim/approve")
+		@ApiOperation(value = "Get all Expense Claims by Employee", response = List.class)
+		@ApiResponses(value = {
+	            @ApiResponse(code = 200, message = "Successfully retrieved all expense claims"),
+	            @ApiResponse(code = 400, message = "Check your input parameters"),
+	            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+	            @ApiResponse(code = 404, message = "No expense claims found"),
+	            @ApiResponse(code = 500, message = "Application failed to process the request")
+	    })
+		@ResponseStatus(code = HttpStatus.OK)
+	public ResponseEntity<MessageResponse> approveClaim(@RequestBody ExpenseClaim expenseClaim){
+			
+			
+			expenseClaimService.approveClaim(expenseClaim);
+			return ResponseEntity.ok(new MessageResponse("Claim Approved"));
+		}
 	
 	// Find all Expense Claims between two dates
 	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")

@@ -38,6 +38,9 @@ public class ExpenseClaim {
 	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate endDate;
 	
+	
+	private String status = "Pending";
+	
 	@NotNull
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Expense expense;
@@ -97,6 +100,14 @@ public class ExpenseClaim {
 	         } else {
 	           throw new InvalidEndDateException("End date should be the date after start date");
 	         }
+	}
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Expense getExpense() {
