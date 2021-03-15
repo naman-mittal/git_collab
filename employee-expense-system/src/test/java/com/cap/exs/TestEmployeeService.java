@@ -6,9 +6,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,10 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.cap.exs.entities.ERole;
 import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.LoginDetails;
-import com.cap.exs.entities.Role;
+import com.cap.exs.exceptions.EmailAlreadyRegisteredException;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
 import com.cap.exs.repos.IEmployeeRepository;
 import com.cap.exs.services.EmployeeService;
@@ -44,15 +41,9 @@ public class TestEmployeeService {
 	public void setup()
 	{
 		
-		loginDetails = new LoginDetails("naman", "ghdgfhdgf", "fdghfd");
+		loginDetails = new LoginDetails("naman1212", "ghdgfhdgf", "fdghfd");
 		
-		Set<Role> roles = new HashSet<>();
-		
-		roles.add(new Role(ERole.ROLE_USER));
-		
-		loginDetails.setRoles(roles);
-		
-		employee = new Employee("naman mittal","QTYUT5678R", "02/05/2020", "02/05/2020", "45000", "email1@gmail.com", loginDetails);
+		employee = new Employee("naman mittal","QTYIT5678R", "02/05/2020", "02/05/2020", "45000", "email11@gmail.com", loginDetails);
 		
 	}
 	
@@ -72,12 +63,21 @@ public class TestEmployeeService {
 			Employee emp = new Employee();
 			emp.setEmpName("John");
 			
-			LoginDetails ld = new LoginDetails("test2", "test", "tester");
+			LoginDetails ld = new LoginDetails("naman", "test", "tester");
 			emp.setLoginDetails(ld);
 			
 			employeeService.addEmployee(emp);
 			
 		}
+		
+		@Test(expected = EmailAlreadyRegisteredException.class)
+				public void testAddEmployeeWithExistingEmail() {
+					
+					employee.setEmpEmailId("naman@gmail.com");
+					
+					employeeService.addEmployee(employee);
+					
+				}
 	
 	//@Test(expected = NullPointerException.class)
 	public void testAddEmployeeWithoutLoginDetails() {

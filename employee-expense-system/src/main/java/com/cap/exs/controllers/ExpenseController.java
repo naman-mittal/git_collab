@@ -40,7 +40,7 @@ public class ExpenseController {
 	private ExpenseService expenseService;
 	
 	@PreAuthorize("hasRole('ADMIN')")
-	@GetMapping("/expense/expenseCode")
+	@GetMapping("/expenses/expenseCode")
 	@ApiOperation(value = "Get all Expense Code", response = List.class)
 	@ResponseStatus(code = HttpStatus.OK)
 	@ApiResponses(value = {

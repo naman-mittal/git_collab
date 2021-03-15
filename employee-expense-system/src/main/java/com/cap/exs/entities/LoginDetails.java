@@ -32,7 +32,6 @@ public class LoginDetails {
 	private String userName;		//employee username
 	
 	@NotNull
-	@Size(min = 8,max = 20)
 	private String password;		//employee password
 	
 	@NotNull
