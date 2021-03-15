@@ -436,3 +436,116 @@
 2021-03-15 11:07:11.239  INFO 25396 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2021-03-15 11:07:11.245  INFO 25396 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2021-03-15 11:07:11.267  INFO 25396 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-03-15 11:08:22.669  INFO 32176 --- [main] com.cap.exs.TestLoginService             : Starting TestLoginService using Java 1.8.0_271 on malware with PID 32176 (started by Naman Mittal in C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Git\git_collab\employee-expense-system)
+2021-03-15 11:08:22.682  INFO 32176 --- [main] com.cap.exs.TestLoginService             : No active profile set, falling back to default profiles: default
+2021-03-15 11:08:26.499  INFO 32176 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-15 11:08:26.764  INFO 32176 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 250 ms. Found 6 JPA repository interfaces.
+2021-03-15 11:08:28.451  INFO 32176 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@71e4b308' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-15 11:08:28.508  INFO 32176 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-15 11:08:29.912  INFO 32176 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-15 11:08:30.229  INFO 32176 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-03-15 11:08:30.561  INFO 32176 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-15 11:08:31.148  INFO 32176 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-15 11:08:32.336  INFO 32176 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-15 11:08:32.400  INFO 32176 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-03-15 11:08:36.491  INFO 32176 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-15 11:08:36.506  INFO 32176 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-15 11:08:39.925  WARN 32176 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-15 11:08:45.065  INFO 32176 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-15 11:08:45.799  INFO 32176 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/v2/api-docs'] with []
+2021-03-15 11:08:45.801  INFO 32176 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/ui'] with []
+2021-03-15 11:08:45.802  INFO 32176 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources/**'] with []
+2021-03-15 11:08:45.802  INFO 32176 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/security'] with []
+2021-03-15 11:08:45.802  INFO 32176 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-03-15 11:08:45.803  INFO 32176 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/webjars/**'] with []
+2021-03-15 11:08:47.664  INFO 32176 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@654c2f81, org.springframework.security.web.context.SecurityContextPersistenceFilter@54f9326c, org.springframework.security.web.header.HeaderWriterFilter@7c02b3cb, org.springframework.web.filter.CorsFilter@38af386e, org.springframework.security.web.authentication.logout.LogoutFilter@282c5075, com.cap.exs.security.jwt.AuthTokenFilter@1c4aa701, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@33bfe6d3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@998fbd4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@33827b88, org.springframework.security.web.session.SessionManagementFilter@1b994617, org.springframework.security.web.access.ExceptionTranslationFilter@6694fb1b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@74d53d63]
+2021-03-15 11:08:48.962  INFO 32176 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-15 11:08:50.848  INFO 32176 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-15 11:08:50.964  INFO 32176 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-15 11:08:51.296  INFO 32176 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-15 11:08:52.437  INFO 32176 --- [main] com.cap.exs.TestLoginService             : Started TestLoginService in 30.774 seconds (JVM running for 34.048)
+2021-03-15 11:08:53.505  INFO 32176 --- [main] o.h.e.j.b.internal.AbstractBatchImpl     : HHH000010: On release of batch it still contained JDBC statements
+2021-03-15 11:08:53.757  WARN 32176 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23503
+2021-03-15 11:08:53.759 ERROR 32176 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: update or delete on table "login_details" violates foreign key constraint "fkb8aasomv1i7mus9v7xso8duo8" on table "employee"
+  Detail: Key (id)=(2) is still referenced from table "employee".
+2021-03-15 11:08:53.763  INFO 32176 --- [main] o.h.e.j.b.internal.AbstractBatchImpl     : HHH000010: On release of batch it still contained JDBC statements
+2021-03-15 11:08:53.767 ERROR 32176 --- [main] com.cap.exs.services.LoginService        : employee exist with loginDetails = LoginDetails [id=2, userName=user1, password=$2a$10$jgeEgdFa5Fy4Uewwp4we7ub2Jpo9ZpM/Hfzl7C7YKypgBd4lnzcly, role=Programmer]
+2021-03-15 11:08:53.923  INFO 32176 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-15 11:08:53.949  INFO 32176 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-15 11:08:53.955  INFO 32176 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-03-15 11:08:53.983  INFO 32176 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-03-15 11:09:55.545  INFO 33200 --- [main] com.cap.exs.TestLoginService             : Starting TestLoginService using Java 1.8.0_271 on malware with PID 33200 (started by Naman Mittal in C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Git\git_collab\employee-expense-system)
+2021-03-15 11:09:55.563  INFO 33200 --- [main] com.cap.exs.TestLoginService             : No active profile set, falling back to default profiles: default
+2021-03-15 11:09:59.765  INFO 33200 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-15 11:10:00.177  INFO 33200 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 367 ms. Found 6 JPA repository interfaces.
+2021-03-15 11:10:01.628  INFO 33200 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@71e4b308' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-15 11:10:01.688  INFO 33200 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-15 11:10:03.498  INFO 33200 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-15 11:10:03.877  INFO 33200 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-03-15 11:10:04.569  INFO 33200 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-15 11:10:05.216  INFO 33200 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-15 11:10:06.534  INFO 33200 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-15 11:10:06.604  INFO 33200 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-03-15 11:10:11.337  INFO 33200 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-15 11:10:11.358  INFO 33200 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-15 11:10:15.094  WARN 33200 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-15 11:10:19.424  INFO 33200 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-15 11:10:20.168  INFO 33200 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/v2/api-docs'] with []
+2021-03-15 11:10:20.169  INFO 33200 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/ui'] with []
+2021-03-15 11:10:20.170  INFO 33200 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources/**'] with []
+2021-03-15 11:10:20.170  INFO 33200 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/security'] with []
+2021-03-15 11:10:20.173  INFO 33200 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-03-15 11:10:20.173  INFO 33200 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/webjars/**'] with []
+2021-03-15 11:10:21.988  INFO 33200 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@126ff1a1, org.springframework.security.web.context.SecurityContextPersistenceFilter@2dcd451f, org.springframework.security.web.header.HeaderWriterFilter@21ab919c, org.springframework.web.filter.CorsFilter@546c30c2, org.springframework.security.web.authentication.logout.LogoutFilter@654db80b, com.cap.exs.security.jwt.AuthTokenFilter@7c8b37a8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5dd6f517, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1b994617, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6ba08a09, org.springframework.security.web.session.SessionManagementFilter@49ea13b6, org.springframework.security.web.access.ExceptionTranslationFilter@6bf28f61, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6074d638]
+2021-03-15 11:10:23.230  INFO 33200 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-15 11:10:24.700  INFO 33200 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-15 11:10:24.919  INFO 33200 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-15 11:10:25.457  INFO 33200 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-15 11:10:26.760  INFO 33200 --- [main] com.cap.exs.TestLoginService             : Started TestLoginService in 32.209 seconds (JVM running for 35.603)
+2021-03-15 11:10:27.773  WARN 33200 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23503
+2021-03-15 11:10:27.774 ERROR 33200 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: update or delete on table "login_details" violates foreign key constraint "fkb8aasomv1i7mus9v7xso8duo8" on table "employee"
+  Detail: Key (id)=(2) is still referenced from table "employee".
+2021-03-15 11:10:27.776  INFO 33200 --- [main] o.h.e.j.b.internal.AbstractBatchImpl     : HHH000010: On release of batch it still contained JDBC statements
+2021-03-15 11:10:27.785 ERROR 33200 --- [main] com.cap.exs.services.LoginService        : employee exist with loginDetails = LoginDetails [id=2, userName=user1, password=$2a$10$jgeEgdFa5Fy4Uewwp4we7ub2Jpo9ZpM/Hfzl7C7YKypgBd4lnzcly, role=Programmer]
+2021-03-15 11:10:27.982  INFO 33200 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-15 11:10:28.040  INFO 33200 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-15 11:10:28.047  INFO 33200 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-03-15 11:10:28.094  INFO 33200 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-03-15 11:11:42.825  INFO 24032 --- [main] com.cap.exs.TestLoginService             : Starting TestLoginService using Java 1.8.0_271 on malware with PID 24032 (started by Naman Mittal in C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Git\git_collab\employee-expense-system)
+2021-03-15 11:11:42.847  INFO 24032 --- [main] com.cap.exs.TestLoginService             : No active profile set, falling back to default profiles: default
+2021-03-15 11:11:46.571  INFO 24032 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-15 11:11:46.897  INFO 24032 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 311 ms. Found 6 JPA repository interfaces.
+2021-03-15 11:11:48.395  INFO 24032 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@2264ea32' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-15 11:11:48.453  INFO 24032 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-15 11:11:49.791  INFO 24032 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-15 11:11:50.321  INFO 24032 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-03-15 11:11:50.836  INFO 24032 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-15 11:11:51.392  INFO 24032 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-15 11:11:52.617  INFO 24032 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-15 11:11:52.666  INFO 24032 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-03-15 11:11:56.827  INFO 24032 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-15 11:11:56.853  INFO 24032 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-15 11:12:00.513  WARN 24032 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-15 11:12:04.892  INFO 24032 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-15 11:12:05.587  INFO 24032 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/v2/api-docs'] with []
+2021-03-15 11:12:05.588  INFO 24032 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/ui'] with []
+2021-03-15 11:12:05.589  INFO 24032 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources/**'] with []
+2021-03-15 11:12:05.589  INFO 24032 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/security'] with []
+2021-03-15 11:12:05.590  INFO 24032 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-03-15 11:12:05.590  INFO 24032 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/webjars/**'] with []
+2021-03-15 11:12:07.348  INFO 24032 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7112b21a, org.springframework.security.web.context.SecurityContextPersistenceFilter@6be80629, org.springframework.security.web.header.HeaderWriterFilter@4e02f17d, org.springframework.web.filter.CorsFilter@30bf881e, org.springframework.security.web.authentication.logout.LogoutFilter@1bbb48dd, com.cap.exs.security.jwt.AuthTokenFilter@5690c2a8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@10f10230, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@362b384c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1041ebba, org.springframework.security.web.session.SessionManagementFilter@383e6734, org.springframework.security.web.access.ExceptionTranslationFilter@30333941, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@38af386e]
+2021-03-15 11:12:08.447  INFO 24032 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-15 11:12:09.873  INFO 24032 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-03-15 11:12:09.961  INFO 24032 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-03-15 11:12:10.341  INFO 24032 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-03-15 11:12:11.520  INFO 24032 --- [main] com.cap.exs.TestLoginService             : Started TestLoginService in 29.697 seconds (JVM running for 33.083)
+2021-03-15 11:12:12.261  WARN 24032 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23503
+2021-03-15 11:12:12.261 ERROR 24032 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: update or delete on table "login_details" violates foreign key constraint "fkb8aasomv1i7mus9v7xso8duo8" on table "employee"
+  Detail: Key (id)=(2) is still referenced from table "employee".
+2021-03-15 11:12:12.264  INFO 24032 --- [main] o.h.e.j.b.internal.AbstractBatchImpl     : HHH000010: On release of batch it still contained JDBC statements
+2021-03-15 11:12:12.275 ERROR 24032 --- [main] com.cap.exs.services.LoginService        : employee exist with loginDetails = LoginDetails [id=2, userName=user1, password=$2a$10$jgeEgdFa5Fy4Uewwp4we7ub2Jpo9ZpM/Hfzl7C7YKypgBd4lnzcly, role=Programmer]
+2021-03-15 11:12:12.425 ERROR 24032 --- [main] com.cap.exs.services.LoginService        : username aman already taken!!
+2021-03-15 11:12:12.652  INFO 24032 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-15 11:12:12.729  INFO 24032 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-15 11:12:12.735  INFO 24032 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-03-15 11:12:12.781  INFO 24032 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
