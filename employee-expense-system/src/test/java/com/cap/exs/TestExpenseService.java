@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 
 import com.cap.exs.entities.Expense;
+import com.cap.exs.exceptions.ExpenseAlreadyExistException;
 import com.cap.exs.repos.IExpenseRepository;
 import com.cap.exs.services.ExpenseService;
 
@@ -33,15 +34,29 @@ public class TestExpenseService {
 	public void testAddExpense()
 	{
 		Expense exp = new Expense();
-		exp.setExpenseType("abc");
-		exp.setExpenseDescription("okok");
-		assertEquals(1, expenseRepository.count());
+		exp.setExpenseType("abcabc");
+		exp.setExpenseDescription("okokok");
+		
+		expenseService.addExpense(exp);
+		
+		assertEquals(2, expenseRepository.count());
 		
 	}
 	
+	@Test(expected = ExpenseAlreadyExistException.class)
+	public void testAddExpenseWithExistingType()
+	{
+		Expense exp = new Expense();
+		exp.setExpenseType("abcabc");
+		exp.setExpenseDescription("okokok");
+		
+		expenseService.addExpense(exp);
+		
+		
+		
+	}
 	
-	
-	@Test
+	//@Test
 	public void testFindByExpenseCode()
 	{
 			Expense exp = expenseService.findByCode(1);
