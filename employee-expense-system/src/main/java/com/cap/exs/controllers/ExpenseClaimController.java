@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Positive;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -27,6 +28,8 @@ import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.Expense;
 import com.cap.exs.entities.ExpenseClaim;
 import com.cap.exs.entities.Project;
+import com.cap.exs.exceptions.ExpenseClaimNotFoundException;
+import com.cap.exs.exceptions.InvalidEndDateException;
 import com.cap.exs.request.AddExpenseClaimRequest;
 import com.cap.exs.request.UpdateExpenseClaimRequest;
 import com.cap.exs.response.MessageResponse;
@@ -47,7 +50,13 @@ public class ExpenseClaimController {
 	@Autowired
 	ExpenseClaimService expenseClaimService;
 	
-	// Get all the Expense Claims
+	/**
+	 * This method is for fetching all expense claims
+	 * 
+	 * @return List<ExpenseClaim>
+	 * @throws @{@link ExpenseClaimNotFoundException}
+	 * 
+	 */
 	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
 	@GetMapping("/expenseClaims")
 	@ApiOperation(value = "Get all Expense Claims", response = List.class)
@@ -63,7 +72,18 @@ public class ExpenseClaimController {
 		return expenseClaimService.getAllExpenseClaim();
 	}
 	
-	// Add Expense Claim
+	/**
+	 * This method is for adding a new expense claims
+	 * 
+	 * @param AddExpenseClaimRequest
+	 * @return List<ExpenseClaim>
+	 * @throws {@link EmployeeNotFoundException}
+	 * @throws {@link ExpenseNotFoundException}
+	 * @throws {@link ProjectNotFoundException}
+	 * @throws {@link MethodArgumentNotValidException}
+	 * @throws {@link InvalidEndDateException}
+	 * 
+	 */
 	
 	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/expenseClaim")
@@ -99,7 +119,15 @@ public class ExpenseClaimController {
 		return expenseClaimService.addExpenseClaim(claim);
 	}
 	
-	// Find an Expense Claim by its id
+	/**
+	 * This method is for fetching an expense claim by its id
+	 * 
+	 * @param expenseClaimId
+	 * @return ExpenseClaim
+	 * @throws {@link ExpenseClaimNotFoundException}
+	 * @throws {@link MethodArgumentNotValidException}
+	 * 
+	 */
 	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
 	@GetMapping("/expenseClaim/{id}")
 	@ApiOperation(value = "Retrieve expense claim using its Id", response = ExpenseClaim.class)
@@ -111,11 +139,21 @@ public class ExpenseClaimController {
             @ApiResponse(code = 500, message = "Application failed to process the request")
     })
 	@ResponseStatus(code = HttpStatus.OK)
-	public ExpenseClaim fetchExpenseClaimById(@PathVariable("id") @Min(1) int expenseClaimId){
+	public ExpenseClaim fetchExpenseClaimById(@PathVariable("id") @Positive int expenseClaimId){
 		return expenseClaimService.fetchExpenseClaimById(expenseClaimId);
 	}
 	
-	// Update Expense Claim
+	/**
+	 * This method is for updating an expense claim
+	 * 
+	 * @param UpdateExpenseClaimRequest
+	 * @return ExpenseClaim
+	 * @throws {@link EmployeeNotFoundException}
+	 * @throws {@link MethodArgumentNotValidException}
+	 * @throws {@link InvalidEndDateException}
+	 * 
+	 */
+	
 	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
 	@PutMapping("/expenseClaim")
 	@ApiOperation(value = "Upadate the expense claim", response = ExpenseClaim.class)
@@ -138,7 +176,16 @@ public class ExpenseClaimController {
 		return expenseClaimService.updateExpenseClaim(expenseClaim);
 	}
 	
-	// Delete an Expense Claim by its id
+	/**
+	 * This method is for deleting an expense claims
+	 * 
+	 * @param expenseClaimId
+	 * @return ExpenseClaim
+	 * @throws {@link ExpenseClaimNotFoundException}
+	 * @throws {@link MethodArgumentNotValidException}
+	 * 
+	 */
+	
 	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/expenseClaim/{id}")
 	@ApiOperation(value = "Delete expense claim", response = ExpenseClaim.class)
@@ -154,7 +201,16 @@ public class ExpenseClaimController {
 		return expenseClaimService.deleteExpenseClaimById(expenseClaimId);
 	}
 	
-	// Get Expense Claim by Employee's id
+	/**
+	 * This method is for fetching an expense claim by its id
+	 * 
+	 * @param expenseClaimId
+	 * @return ExpenseClaim
+	 * @throws {@link ExpenseClaimNotFoundException}
+	 * @throws {@link MethodArgumentNotValidException}
+	 * 
+	 */
+	
 	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER') or hasRole('USER')")
 	@GetMapping("/expenseClaims/employee/{id}")
 	@ApiOperation(value = "Get all Expense Claims by Employee", response = List.class)
@@ -173,9 +229,18 @@ public class ExpenseClaimController {
 		return expenseClaimService.getAllClaimsByEmployee(employee);
 	}
 	
-	// Approve Expense Claim
+	/**
+	 * This method is for approving an expense claim
+	 * 
+	 * @param ExpenseClaim
+	 * @return MessageResponse
+	 * @throws {@link ExpenseClaimNotFoundException}
+	 * @throws {@link MethodArgumentNotValidException}
+	 * 
+	 */
+	
 		@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
-		@PutMapping("/expenseClaim/approve")
+		@PutMapping("/expenseClaim/approve/{id}")
 		@ApiOperation(value = "Get all Expense Claims by Employee", response = List.class)
 		@ApiResponses(value = {
 	            @ApiResponse(code = 200, message = "Successfully retrieved all expense claims"),
@@ -184,15 +249,26 @@ public class ExpenseClaimController {
 	            @ApiResponse(code = 404, message = "No expense claims found"),
 	            @ApiResponse(code = 500, message = "Application failed to process the request")
 	    })
-		@ResponseStatus(code = HttpStatus.OK)
-	public ResponseEntity<MessageResponse> approveClaim(@RequestBody ExpenseClaim expenseClaim){
+		@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public ResponseEntity<MessageResponse> approveClaim(@PathVariable("id") @Positive int expenseClaimId){
 			
+			ExpenseClaim expenseClaim = new ExpenseClaim();
+			expenseClaim.setExpenseCodeId(expenseClaimId);
 			
 			expenseClaimService.approveClaim(expenseClaim);
 			return ResponseEntity.ok(new MessageResponse("Claim Approved"));
 		}
 	
-	// Find all Expense Claims between two dates
+		/**
+		 * This method is for finding claims between two dates
+		 * 
+		 * @param startDate
+		 * @param endDate
+		 * @return List<ExpenseClaim>
+		 * @throws {@link ExpenseClaimNotFoundException}
+		 * @throws {@link MethodArgumentNotValidException}
+		 * 
+		 */
 	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
 	@GetMapping("/expenseClaims/dates")
 	@ApiOperation(value = "Get all Expense Claims between two dates", response = List.class)

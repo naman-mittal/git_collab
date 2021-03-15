@@ -7,7 +7,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,8 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.cap.exs.entities.ERole;
 import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.LoginDetails;
+import com.cap.exs.entities.Role;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
 import com.cap.exs.repos.IEmployeeRepository;
 import com.cap.exs.services.EmployeeService;
@@ -43,7 +47,13 @@ public class TestEmployeeService {
 		
 		loginDetails = new LoginDetails("naman", "ghdgfhdgf", "fdghfd");
 		
-		employee = new Employee("naman mittal","RTYUT5678R", "02/05/2020", "02/05/2020", "45000", "email@gmail.com", loginDetails);
+		Set<Role> roles = new HashSet<>();
+		
+		roles.add(new Role(ERole.ROLE_USER));
+		
+		loginDetails.setRoles(roles);
+		
+		employee = new Employee("naman mittal","QTYUT5678R", "02/05/2020", "02/05/2020", "45000", "email1@gmail.com", loginDetails);
 		
 	}
 	
