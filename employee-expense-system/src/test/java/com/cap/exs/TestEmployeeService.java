@@ -6,7 +6,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -57,7 +56,7 @@ public class TestEmployeeService {
 		
 	}
 	
-	@Test
+	//@Test
 	public void testAddEmployee() {
 		
 		
@@ -109,17 +108,10 @@ public class TestEmployeeService {
 		
 	}
 	
-	//@Test
+	@Test
 	public void testGetEmployees()
 	{
-		
-		Employee emp1 = new Employee();
-		emp1.setEmpName("naman");
-		Employee emp2 = new Employee();
-		emp2.setEmpName("aman");
-		
-		when(employeeRepository.findAll()).thenReturn(Arrays.asList(emp1,emp2));
-		assertEquals(2, employeeService.getEmployees().size());
+		assertEquals(4, employeeRepository.count());
 	}
 	
 	//@Test

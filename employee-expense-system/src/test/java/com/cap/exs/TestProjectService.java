@@ -14,13 +14,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.cap.exs.entities.Project;
 import com.cap.exs.repos.IProjectRepository;
-import com.cap.exs.services.ExpenseClaimService;
 import com.cap.exs.services.ProjectService;
 
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-class TestProjectService {
+public class TestProjectService {
 	
 	@Autowired
 	ProjectService projectService;
@@ -28,18 +27,14 @@ class TestProjectService {
 	@Autowired
 	IProjectRepository projectRepository;
 	
-	@Autowired
-	ExpenseClaimService expenseClaimService;
-	
-	
-    //@Test
-	void testGetAllProject(){
-		assertEquals(2, projectService.getAllProject().size());	
+    @Test
+	public void testGetAllProject(){
+		assertEquals(1, projectService.getAllProject().size());	
 	}
 	
 	
 	//@Test
-	void testAddProject() {
+	public void testAddProject() {
 		Project project = new Project();
 		project.setProjectDescription("Java");
 		
@@ -55,7 +50,7 @@ class TestProjectService {
 	
 	
 	//@Test
-	void testUpdateProject() {
+	public void testUpdateProject() {
 		
 		Project project = new Project();
 		project.setProjectCode(1);
@@ -73,21 +68,21 @@ class TestProjectService {
 	
 	
 	//@Test
-	void testDeleteProjectById() {
+	public void testDeleteProjectById() {
 		projectService.deleteProjectById(1);
 		assertEquals(1, projectRepository.count());
 	}
 	
 	
 	//@Test
-	void testGetAllProjectCodes(){
+	public void testGetAllProjectCodes(){
 		List<Integer> allProjectCodes = projectService.getAllProjectCodes();
 		assertEquals(2, allProjectCodes.size());	
 	}
 	
 	
 	//@Test
-	void testFindByCode() {
+	public void testFindByCode() {
 		Project project = projectService.findByCode(1);
 		assertNotNull(project);
 	}
