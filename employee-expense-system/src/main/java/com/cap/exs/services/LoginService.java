@@ -73,8 +73,4 @@ public LoginDetails validateUser(LoginDetails details) {
 }
 
 
-//public LoginDetails logout(LoginDetails details) {
-//	return details;
-//}
-
 }
