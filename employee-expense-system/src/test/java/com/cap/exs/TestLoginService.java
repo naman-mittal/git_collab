@@ -51,7 +51,5 @@ public class TestLoginService {
 		ld.setId(2);
 		
 		loginService.deleteDetailsById(2);
-		
-		loginRepository.count();
 	}
 }

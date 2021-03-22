@@ -2,8 +2,6 @@ package com.cap.exs;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
@@ -19,6 +17,7 @@ import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.LoginDetails;
 import com.cap.exs.exceptions.EmailAlreadyRegisteredException;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
+import com.cap.exs.exceptions.UsernameAlreadyExistException;
 import com.cap.exs.repos.IEmployeeRepository;
 import com.cap.exs.services.EmployeeService;
 
@@ -57,16 +56,15 @@ public class TestEmployeeService {
 		
 	}
 
-	//@Test(expected = UsernameAlreadyExistException.class)
+	@Test(expected = UsernameAlreadyExistException.class)
 		public void testAddEmployeeWithExistingUsername() {
 			
-			Employee emp = new Employee();
-			emp.setEmpName("John");
 			
-			LoginDetails ld = new LoginDetails("naman", "test", "tester");
-			emp.setLoginDetails(ld);
 			
-			employeeService.addEmployee(emp);
+			
+			employee.setEmpEmailId("naman12345@gmail.com");
+			employee.setEmpPAN("SDFTY3465T");
+			employeeService.addEmployee(employee);
 			
 		}
 		
@@ -82,33 +80,32 @@ public class TestEmployeeService {
 	//@Test(expected = NullPointerException.class)
 	public void testAddEmployeeWithoutLoginDetails() {
 		
-		Employee emp = new Employee();
-		emp.setEmpName("Danny");
 		
-		employeeService.addEmployee(emp);
+		
+		employee.setLoginDetails(null);
+		
+		employeeService.addEmployee(employee);
 		
 	}
 	
-	//@Test
+	@Test
 	public void testFindByEmployeeCode()
 	{
-		Employee emp = new Employee("Naman", null, null, null, null, null, new LoginDetails());
-		emp.setEmpId(1);
+		employee.setEmpId(1);
 		
-		assertEquals(emp,employeeService.findByEmployeeCode(2));
+		assertNotNull(employeeService.findByEmployeeCode(1));
 		
 	}
 
-	//@Test(expected = EmployeeNotFoundException.class)
+	@Test(expected = EmployeeNotFoundException.class)
 	public void testFindNonExistingEmployee()
 	{
-		when(employeeRepository.findById(100)).thenThrow(EmployeeNotFoundException.class);
 		Employee emp = employeeService.findByEmployeeCode(100);
 		System.out.println(emp);
 		
 	}
 	
-	@Test
+	//@Test
 	public void testGetEmployees()
 	{
 		assertEquals(4, employeeRepository.count());
@@ -122,19 +119,19 @@ public class TestEmployeeService {
 		when(employeeRepository.findById(1)).thenReturn(Optional.of(emp));
 		employeeService.deleteEmpById(1);
 		
-		verify(employeeRepository,times(1)).delete(emp);
+		assertEquals(2,employeeRepository.count());
 		
 	}
 	
-	//@Test(expected = EmployeeNotFoundException.class)
+	@Test(expected = EmployeeNotFoundException.class)
 	public void testDeleteNonExistingEmployee()
 	{
-		Employee emp = new Employee("Naman", null, null, null, null, null, new LoginDetails());
-		emp.setEmpId(100);
-		when(employeeRepository.findById(emp.getEmpId())).thenThrow(EmployeeNotFoundException.class);
-		employeeService.deleteEmpById(emp.getEmpId());
 		
-		verify(employeeRepository,times(1)).delete(emp);
+		employee.setEmpId(100);
+		
+		employeeService.deleteEmpById(employee.getEmpId());
+		
+		
 	}
 	
 }
