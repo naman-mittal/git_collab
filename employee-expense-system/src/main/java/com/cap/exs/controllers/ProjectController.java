@@ -68,6 +68,7 @@ public class ProjectController {
 	public Project addProject(@ApiParam(name="Add Project Request", required = true)@Valid @RequestBody AddProjectRequest request) {		//Add projects
 		
 		Project project = new Project();
+		project.setTitle(request.getTitle());
 		project.setProjectDescription(request.getDescription());
 		project.setStartDate(request.getStartDate());
 		project.setEndDate(request.getEndDate());
