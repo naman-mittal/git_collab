@@ -91,6 +91,7 @@ public class ProjectController {
 		
 		Project project = new Project();
 		
+		project.setTitle(request.getTitle());
 		project.setProjectCode(request.getId());
 		project.setProjectDescription(request.getDescription());
 		project.setStartDate(request.getStartDate());

@@ -3,6 +3,7 @@ package com.cap.exs.request;
 import java.time.LocalDate;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
@@ -17,6 +18,11 @@ public class UpdateProjectRequest {
 	private int id;
 	
 	@NotNull
+	@Pattern(regexp = "[a-z A-Z]*",message = "Invalid")
+	@Size(min = 5 , max = 30)
+	private String title;
+	
+	@NotNull
 	@Size(min = 5,max = 50)
 	private String description;
 	
@@ -29,9 +35,10 @@ public class UpdateProjectRequest {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate endDate;
-	public UpdateProjectRequest(int id, String description, LocalDate startDate, LocalDate endDate) {
+	public UpdateProjectRequest(int id,String title, String description, LocalDate startDate, LocalDate endDate) {
 		super();
 		this.id = id;
+		this.title = title;
 		this.description = description;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -44,6 +51,14 @@ public class UpdateProjectRequest {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getDescription() {
 		return description;
