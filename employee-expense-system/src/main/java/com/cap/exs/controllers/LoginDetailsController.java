@@ -6,17 +6,19 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cap.exs.entities.Employee;
+import com.cap.exs.repos.IEmployeeRepository;
 import com.cap.exs.request.LoginRequest;
 import com.cap.exs.response.JwtResponse;
 import com.cap.exs.security.jwt.JwtUtils;
@@ -29,6 +31,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+@CrossOrigin(origins = "*",maxAge = 30)
 @RestController
 @Validated
 @RequestMapping("/api/v1")
@@ -37,6 +40,9 @@ public class LoginDetailsController {
 
 	@Autowired
 	LoginService loginService;
+	
+	@Autowired
+	IEmployeeRepository employeeRepository;
 	
 	@Autowired
 	AuthenticationManager authenticationManager;
@@ -78,8 +84,12 @@ public class LoginDetailsController {
 				.map(GrantedAuthority::getAuthority)
 				.collect(Collectors.toList());
 
+		Employee emp = employeeRepository.findByUsername(userDetails.getUsername());
+		
+		System.out.println("emp id = " + emp.getEmpId());
+		
 		return ResponseEntity.ok(new JwtResponse(jwt, 
-												 userDetails.getId(), 
+												 emp.getEmpId(), 
 												 userDetails.getUsername(), 
 												 roles));
 		

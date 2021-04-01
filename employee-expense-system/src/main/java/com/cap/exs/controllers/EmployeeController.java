@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,10 +30,8 @@ import com.cap.exs.entities.ERole;
 import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.LoginDetails;
 import com.cap.exs.entities.Role;
-import com.cap.exs.exceptions.EmailAlreadyRegisteredException;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
 import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
-import com.cap.exs.exceptions.PANAlreadyRegisteredException;
 import com.cap.exs.exceptions.RoleNotFoundException;
 import com.cap.exs.repos.IRoleRepository;
 import com.cap.exs.request.SignupRequest;
@@ -47,6 +45,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+@CrossOrigin(origins = "*",maxAge = 30)
 @RestController
 @Validated
 @RequestMapping("/api/v1")
@@ -89,17 +88,17 @@ public class EmployeeController {
 		LoginDetails loginDetails = new LoginDetails();
 		
 		employee.setEmpName(request.getName());
-		employee.setEmpPAN(request.getPan());
-		employee.setEmpDesignation(request.getDesignation());
-		employee.setEmpDomain(request.getDomain());
-		employee.setEmpDOB(request.getDob());
-		employee.setEmpDOJ(request.getDoj());
-		employee.setEmpSalary(request.getSalary());
+		//employee.setEmpPAN(request.getPan());
+		//employee.setEmpDesignation(request.getDesignation());
+		//employee.setEmpDomain(request.getDomain());
+		//employee.setEmpDOB(request.getDob());
+		//employee.setEmpDOJ(request.getDoj());
+		//employee.setEmpSalary(request.getSalary());
 		employee.setEmpEmailId(request.getEmail());
 		
 		loginDetails.setUserName(request.getUsername());
 		loginDetails.setPassword(encoder.encode(request.getPassword()));
-		loginDetails.setRole(request.getRole());
+		//loginDetails.setRole(request.getRole());
 		
 		Set<String> strRoles = request.getRoles();
 		Set<Role> roles = new HashSet<>();
@@ -176,7 +175,7 @@ public class EmployeeController {
 	 * 
 	 */
 	
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN') or hasRole('USER') or hasRole('MANAGER')")
 	@GetMapping("/employee/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
 	@ApiOperation(value = "Retrieve an employee using its Id", response = Employee.class)
@@ -189,6 +188,12 @@ public class EmployeeController {
     })
 	public Employee findByEmployeeCode(@PathVariable("id") @Positive int empId) {
 		
+//		try {
+//			Thread.sleep(5000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		return employeeService.findByEmployeeCode(empId);		
 	}
 	
@@ -220,7 +225,7 @@ public class EmployeeController {
 	}
 	
 	/**
-	 * This method is for signing up
+	 * This method is for updating employee
 	 * 
 	 * @param UpdateEmployeeRequest
 	 * @return Employee
@@ -246,8 +251,11 @@ public class EmployeeController {
 		Employee employee = new Employee();
 		
 		employee.setEmpId(request.getId());
-		employee.setEmpDesignation(request.getDesignation());
-		employee.setEmpDomain(request.getDomain());
+//		employee.setEmpEmailId(null);
+//		employee.setEmpName(null);
+//		employee
+//		employee.setEmpDesignation(request.getDesignation());
+//		employee.setEmpDomain(request.getDomain());
 		employee.setEmpPAN(request.getPan());
 		
 		return employeeService.updateEmployee(employee);

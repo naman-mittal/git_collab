@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -22,6 +23,11 @@ public class Project {
 	@SequenceGenerator(name = "project_sequence",allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "project_sequence")
 	private int projectCode;
+	
+	@NotNull
+	@Pattern(regexp = "[a-z A-Z]*",message = "Invalid")
+	@Size(min = 5 , max = 30)
+	private String title;
 	
 	@NotNull
 	@Size(min = 5,max = 50)
@@ -42,8 +48,9 @@ public class Project {
 	
 	
 	//Constructor using fields
-	public Project(String projectDescription, LocalDate startDate, LocalDate endDate) {
+	public Project(String title, String projectDescription, LocalDate startDate, LocalDate endDate) {
 		super();
+		this.title = title;
 		this.projectDescription = projectDescription;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -58,7 +65,16 @@ public class Project {
 		this.projectCode = projectCode;
 	}
 	
-	
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
 	public String getProjectDescription() {
 		return projectDescription;
 	}

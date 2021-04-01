@@ -10,6 +10,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.cap.exs.entities.Project;
+import com.cap.exs.exceptions.AlreadyExistException;
 import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
 import com.cap.exs.exceptions.ProjectNotFoundException;
 import com.cap.exs.repos.IProjectRepository;
@@ -41,6 +42,12 @@ public class ProjectService implements IProjectService{
 	// Add project
 	public Project addProject(Project project) {
 		
+		Project foundProject = projectRepository.findByTitle(project.getTitle());
+		if(foundProject != null)
+		{
+			throw new AlreadyExistException("Project Already Exist!!");
+		}
+		
 		return projectRepository.save(project);
 	}
 	
@@ -49,6 +56,15 @@ public class ProjectService implements IProjectService{
 	public Project updateProject(Project project) {
 		
 		this.findByCode(project.getProjectCode());
+		
+		Project foundProject = projectRepository.findByTitle(project.getTitle());
+		
+		if(foundProject!=null && foundProject.getProjectCode()!=project.getProjectCode())
+		{
+			String errorMessage = String.format("project : %s already exists... Cannot update!", project.getTitle());
+			logger.error(errorMessage, AlreadyExistException.class);
+			throw new AlreadyExistException(errorMessage);
+		}
 		
 		return projectRepository.save(project);
 	}

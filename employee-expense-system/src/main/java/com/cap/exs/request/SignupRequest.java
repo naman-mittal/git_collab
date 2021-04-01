@@ -15,33 +15,33 @@ public class SignupRequest {
 	@Pattern(regexp = "[a-zA-Z]+ [a-zA-Z]+",message = "Name should be in format : [FirstName LastName]")
 	private String name;
 	
-	@Pattern(regexp = "[A-Z]{5}[0-9]{4}[A-Z]{1}",message = "Invalid")
-	private String pan;
-	
-	@Pattern(regexp = "[a-z A-Z]*",message = "Invalid")
-	@Size(min = 4,max = 20)
-	private String designation;
-	
-	@Pattern(regexp = "[a-z A-Z]*",message = "Invalid")
-	@Size(min = 4,max = 20)
-	private String domain;
-	
-	
-	@NotNull(message = "Employee date of joining cannot be null")
-	@Pattern(regexp = "^(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\\d\\d$", message = "Invalid date of joining")
-	@Past
-	private String doj;
-	
-	
-	@NotNull(message = "Employee date of birth cannot be null")
-	@Pattern(regexp = "^(0[1-9]|1[012])/(0[1-9]|[12][0-9]|3[01])/(19|20)\\d\\d$", message = "Invalid date of birth")
-	@Past
-	private String dob;
-	
-	@NotNull
-	@Pattern(regexp = "[0-9]*",message = "Invalid")
-	@Size(min = 4,message="should be greater than equal to 1000")
-	private String salary;
+//	@Pattern(regexp = "[A-Z]{5}[0-9]{4}[A-Z]{1}",message = "Invalid")
+//	private String pan;
+//	
+//	@Pattern(regexp = "[a-z A-Z]*",message = "Invalid")
+//	@Size(min = 4,max = 20)
+//	private String designation;
+//	
+//	@Pattern(regexp = "[a-z A-Z]*",message = "Invalid")
+//	@Size(min = 4,max = 20)
+//	private String domain;
+//	
+//	
+//	@NotNull(message = "Employee date of joining cannot be null")
+//	@Pattern(regexp = "^(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\\d\\d$", message = "Invalid date of joining")
+//	@Past
+//	private String doj;
+//	
+//	
+//	@NotNull(message = "Employee date of birth cannot be null")
+//	@Pattern(regexp = "^(0[1-9]|1[012])/(0[1-9]|[12][0-9]|3[01])/(19|20)\\d\\d$", message = "Invalid date of birth")
+//	@Past
+//	private String dob;
+//	
+//	@NotNull
+//	@Pattern(regexp = "[0-9]*",message = "Invalid")
+//	@Size(min = 4,message="should be greater than equal to 1000")
+//	private String salary;
 	 
 	@NotNull(message = "Employee email cannot be null")
 	@Pattern(regexp = "[A-Za-z0-9]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}", message = "Invalid email address")
@@ -55,9 +55,9 @@ public class SignupRequest {
 	@Size(min = 8,max = 20)
 	private String password;		
 	
-	@NotNull
-	@Size(min = 4,max = 20)
-	private String role;
+//	@NotNull
+//	@Size(min = 4,max = 20)
+//	private String role;
 
 	 private Set<String> roles;
 	
@@ -73,15 +73,13 @@ public class SignupRequest {
 		super();
 	}
 
-	public SignupRequest(String name, String doj, String dob, String email, String username, String password, String role) {
+	public SignupRequest(String name,String email, String username, String password) {
 		super();
 		this.name = name;
-		this.doj = doj;
-		this.dob = dob;
 		this.email = email;
 		this.username = username;
 		this.password = password;
-		this.role = role;
+		
 	}
 
 	public String getName() {
@@ -92,53 +90,53 @@ public class SignupRequest {
 		this.name = name;
 	}
 
-	public String getDoj() {
-		return doj;
-	}
-
-	public void setDoj(String doj) {
-		this.doj = doj;
-	}
-
-	public String getDob() {
-		return dob;
-	}
-
-	public void setDob(String dob) {
-		this.dob = dob;
-	}
-
-	public String getDomain() {
-		return domain;
-	}
-
-	public void setDomain(String domain) {
-		this.domain = domain;
-	}
-
-	public String getDesignation() {
-		return designation;
-	}
-
-	public void setDesignation(String designation) {
-		this.designation = designation;
-	}
-
-	public String getPan() {
-		return pan;
-	}
-
-	public void setPan(String pan) {
-		this.pan = pan;
-	}
-
-	public String getSalary() {
-		return salary;
-	}
-
-	public void setSalary(String salary) {
-		this.salary = salary;
-	}
+//	public String getDoj() {
+//		return doj;
+//	}
+//
+//	public void setDoj(String doj) {
+//		this.doj = doj;
+//	}
+//
+//	public String getDob() {
+//		return dob;
+//	}
+//
+//	public void setDob(String dob) {
+//		this.dob = dob;
+//	}
+//
+//	public String getDomain() {
+//		return domain;
+//	}
+//
+//	public void setDomain(String domain) {
+//		this.domain = domain;
+//	}
+//
+//	public String getDesignation() {
+//		return designation;
+//	}
+//
+//	public void setDesignation(String designation) {
+//		this.designation = designation;
+//	}
+//
+//	public String getPan() {
+//		return pan;
+//	}
+//
+//	public void setPan(String pan) {
+//		this.pan = pan;
+//	}
+//
+//	public String getSalary() {
+//		return salary;
+//	}
+//
+//	public void setSalary(String salary) {
+//		this.salary = salary;
+//	}
 
 	public String getEmail() {
 		return email;
@@ -164,13 +162,13 @@ public class SignupRequest {
 		this.password = password;
 	}
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
+//	public String getRole() {
+//		return role;
+//	}
+//
+//	public void setRole(String role) {
+//		this.role = role;
+//	}
 	
 	
 	

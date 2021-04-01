@@ -45,8 +45,8 @@ class UpdateUser extends Component {
 
   componentDidMount()
   {
-
-    // this.props.onFindUser(this.props.match.params.id)
+    console.log("fetching user")
+    this.props.onFetchUser(this.props.match.params.id)
 
     // this.name.current.value = this.props.user.username
     //       this.email.current.value = this.props.user.email
@@ -76,10 +76,11 @@ class UpdateUser extends Component {
     //   });
 
   }
-  
-
 
   render() {
+
+    //this.name.current.value = this.props.user===undefined ? '' : this.props.user.username
+
     return (
       <div>
         <div className="w-50 user-form">
@@ -138,14 +139,16 @@ const mapStateToProps = (state)=>{
   
   return {
    
-    message : state.message
+    message : state.message,
+    user : state.updateUser
   }
 }
 
 const mapDispatchToState = (dispatch)=>{
 
   return {
-    onUpdateUser : (payload) => dispatch(actions.EditUser(payload))
+    onUpdateUser : (payload) => dispatch(actions.EditUser(payload)),
+    onFetchUser : (id) => dispatch(actions.fetchUser(id))
   }
 
 }

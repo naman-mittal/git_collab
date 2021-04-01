@@ -32,32 +32,32 @@ public class Employee {
 	@Pattern(regexp = "[a-zA-Z]+ [a-zA-Z]+",message = "Name should be in format : [FirstName LastName]")
 	private String empName;
 	
-	@Pattern(regexp = "[A-Z]{5}[0-9]{4}[A-Z]{1}",message = "Invalid")
+	//@Pattern(regexp = "[A-Z]{5}[0-9]{4}[A-Z]{1}",message = "Invalid")
 	private String empPAN;
 	
-	@Pattern(regexp = "[a-z A-Z]*",message = "Invalid")
-	@Size(min = 4,max = 20)
+	//@Pattern(regexp = "[a-z A-Z]*",message = "Invalid")
+	//@Size(min = 4,max = 20)
 	private String empDesignation;
 	
-	@Pattern(regexp = "[a-z A-Z]*",message = "Invalid")
-	@Size(min = 4,max = 20)
+	//@Pattern(regexp = "[a-z A-Z]*",message = "Invalid")
+	//@Size(min = 4,max = 20)
 	private String empDomain;
 	
 	
-	@NotNull(message = "Employee date of joining cannot be null")
-	@Pattern(regexp = "^(0[1-9]|1[012])/(0[1-9]|[12][0-9]|3[01])/(19|20)\\d\\d$", message = "Invalid date of joining")
-	@Past
+	//@NotNull(message = "Employee date of joining cannot be null")
+	//@Pattern(regexp = "^(0[1-9]|1[012])/(0[1-9]|[12][0-9]|3[01])/(19|20)\\d\\d$", message = "Invalid date of joining")
+	//@Past
 	private String empDOJ;
 	
 	
-	@NotNull(message = "Employee date of birth cannot be null")
-	@Pattern(regexp = "^(0[1-9]|1[012])/(0[1-9]|[12][0-9]|3[01])/(19|20)\\d\\d$", message = "Invalid date of birth")
-	@Past
+	//@NotNull(message = "Employee date of birth cannot be null")
+	//@Pattern(regexp = "^(0[1-9]|1[012])/(0[1-9]|[12][0-9]|3[01])/(19|20)\\d\\d$", message = "Invalid date of birth")
+	//@Past
 	private String empDOB;
 	
-	@NotNull
-	@Pattern(regexp = "[0-9]*",message = "Invalid")
-	@Size(min = 4,message="should be greater than equal to 1000")
+	//@NotNull
+	//@Pattern(regexp = "[0-9]*",message = "Invalid")
+	//@Size(min = 4,message="should be greater than equal to 1000")
 	private String empSalary;
 	 
 	@NotNull(message = "Employee email cannot be null")

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cap.exs.entities.LoginDetails;
+import com.cap.exs.repos.IEmployeeRepository;
 import com.cap.exs.repos.ILoginRepository;
 
 @Service
@@ -15,6 +16,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	ILoginRepository userRepository;
 
+	
+	
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -24,6 +27,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		throw new UsernameNotFoundException("User Not Found with username: " + username);
 		}
 
+		
+		
 		return UserDetailsImpl.build(user);
 	}
 

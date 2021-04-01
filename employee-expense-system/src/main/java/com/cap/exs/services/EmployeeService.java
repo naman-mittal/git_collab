@@ -104,7 +104,7 @@ public class EmployeeService implements IEmployeeService {
 		try
 		{
 		employeeRepository.delete(employee);
-		loginService.deleteDetailsById(employee.getLoginDetails().getId());
+		//loginService.deleteDetailsById(employee.getLoginDetails().getId());
 		}
 		catch(DataIntegrityViolationException e)
 		{
@@ -120,20 +120,22 @@ public class EmployeeService implements IEmployeeService {
 		
 		
 		
-		Employee foundEmployee = this.findByEmployeeCode(employee.getEmpId());
+		Employee foundEmployee =  this.findByEmployeeCode(employee.getEmpId());
 		
-		Employee found = employeeRepository.findByEmpPAN(employee.getEmpPAN());
-		
-		if(found!=null && found.getEmpId()!=employee.getEmpId())
-		{
-			String errorMessage = String.format("pan : %s already registered... Cannot update!", employee.getEmpPAN());
-			logger.error(errorMessage, PANAlreadyRegisteredException.class);
-			throw new PANAlreadyRegisteredException(errorMessage);
-		}
-		
-		foundEmployee.setEmpDesignation(employee.getEmpDesignation());
-		foundEmployee.setEmpDomain(employee.getEmpDomain());
+//		Employee found = employeeRepository.findByEmpPAN(employee.getEmpPAN());
+//		
+//		if(found!=null && found.getEmpId()!=employee.getEmpId())
+//		{
+//			String errorMessage = String.format("pan : %s already registered... Cannot update!", employee.getEmpPAN());
+//			logger.error(errorMessage, PANAlreadyRegisteredException.class);
+//			throw new PANAlreadyRegisteredException(errorMessage);
+//		}
+//		
+//		foundEmployee.setEmpDesignation(employee.getEmpDesignation());
+//		foundEmployee.setEmpDomain(employee.getEmpDomain());
 		foundEmployee.setEmpPAN(employee.getEmpPAN());
+		
+		
 		
 		return foundEmployee;
 	}

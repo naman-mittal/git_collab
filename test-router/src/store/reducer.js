@@ -4,6 +4,7 @@ const initialState = {
     users : [
        
     ],
+    updateUser : {},
     message : ''
 }
 
@@ -16,7 +17,7 @@ const reducer = (state = initialState, { type, payload }) => {
         return {users : payload,message:''}
 
     case "FIND_USER" :
-            return {users : payload,updateUser : payload.user}
+            return {users : state.users,updateUser : payload.user}
 
     case "ADD_USER":
         return {users: state.users,message:payload.message}

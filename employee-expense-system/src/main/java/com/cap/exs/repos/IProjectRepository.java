@@ -14,4 +14,6 @@ public interface IProjectRepository extends JpaRepository<Project, Integer>{	//P
 	@Query("Select p.projectCode from Project p")
 	public List<Integer> getAllProjectCodes();
 	
+	public Project findByTitle(String title);
+	
 }
