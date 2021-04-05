@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +30,6 @@ import com.cap.exs.entities.Expense;
 import com.cap.exs.entities.ExpenseClaim;
 import com.cap.exs.entities.Project;
 import com.cap.exs.exceptions.ExpenseClaimNotFoundException;
-import com.cap.exs.exceptions.InvalidEndDateException;
 import com.cap.exs.request.AddExpenseClaimRequest;
 import com.cap.exs.request.UpdateExpenseClaimRequest;
 import com.cap.exs.response.MessageResponse;
@@ -41,6 +41,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+@CrossOrigin(origins = "*",maxAge = 30)
 @RestController
 @Validated
 @RequestMapping("/api/v1")
