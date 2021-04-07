@@ -250,13 +250,28 @@ public class EmployeeController {
 		
 		Employee employee = new Employee();
 		
+		System.out.println(request.getEmail());
+		System.out.println(request.getRole());
+		
 		employee.setEmpId(request.getId());
-//		employee.setEmpEmailId(null);
-//		employee.setEmpName(null);
-//		employee
-//		employee.setEmpDesignation(request.getDesignation());
-//		employee.setEmpDomain(request.getDomain());
+		employee.setEmpEmailId(request.getEmail());
+		employee.setEmpName(request.getName());
+		employee.setEmpDOB(request.getDob());
+		employee.setEmpDOJ(request.getDoj());
+		employee.setEmpDesignation(request.getDesignation());
+		employee.setEmpDomain(request.getDomain());
+		employee.setEmpSalary(request.getSalary());
+		
+		LoginDetails loginDetails = new LoginDetails();
+		
+		loginDetails.setId(request.getLoginId());
+		loginDetails.setRole(request.getRole());
+		
+//		loginDetails.setUserName(request.getUsername());
+		
 		employee.setEmpPAN(request.getPan());
+		
+		employee.setLoginDetails(loginDetails);
 		
 		return employeeService.updateEmployee(employee);
 	}

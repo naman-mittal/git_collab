@@ -17,6 +17,7 @@ import com.cap.exs.exceptions.EmailAlreadyRegisteredException;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
 import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
 import com.cap.exs.exceptions.PANAlreadyRegisteredException;
+import com.cap.exs.exceptions.UsernameAlreadyExistException;
 import com.cap.exs.repos.IEmployeeRepository;
 import com.cap.exs.repos.ILoginRepository;
 import com.cap.exs.service_interfaces.IEmployeeService;
@@ -41,7 +42,7 @@ public class EmployeeService implements IEmployeeService {
 		
 		if(foundEmployee!=null)
 		{
-			String errorMessage = String.format("email %s already registered!!", employee.getEmpEmailId());
+			String errorMessage = "email already registered!!";
 			logger.error(errorMessage, EmailAlreadyRegisteredException.class);
 			throw new EmailAlreadyRegisteredException(errorMessage);
 		}
@@ -52,7 +53,7 @@ public class EmployeeService implements IEmployeeService {
 			foundEmployee = employeeRepository.findByEmpPAN(employee.getEmpPAN());
 			if(foundEmployee!=null)
 			{
-				String errorMessage = String.format("PAN %s already registered!!", employee.getEmpPAN());
+				String errorMessage = "PAN already registered!!";
 				logger.error(errorMessage, PANAlreadyRegisteredException.class);
 				throw new PANAlreadyRegisteredException(errorMessage);
 			}
@@ -104,7 +105,7 @@ public class EmployeeService implements IEmployeeService {
 		try
 		{
 		employeeRepository.delete(employee);
-		//loginService.deleteDetailsById(employee.getLoginDetails().getId());
+		// loginService.deleteDetailsById(employee.getLoginDetails().getId());
 		}
 		catch(DataIntegrityViolationException e)
 		{
@@ -118,22 +119,64 @@ public class EmployeeService implements IEmployeeService {
 	@Transactional
 	public Employee updateEmployee(Employee employee) {
 		
+		Employee foundEmployee = this.findByEmployeeCode(employee.getEmpId());
+		
+		if(employee.getEmpPAN()!=null)
+		{
+		
+			Employee found = employeeRepository.findByEmpPAN(employee.getEmpPAN());
+			
+			if(found!=null && found.getEmpId()!=employee.getEmpId())
+			{
+				String errorMessage = "pan already registered... Cannot update !!";
+				logger.error(errorMessage, PANAlreadyRegisteredException.class);
+				throw new PANAlreadyRegisteredException(errorMessage);
+			}
+			
+		}
 		
 		
-		Employee foundEmployee =  this.findByEmployeeCode(employee.getEmpId());
 		
-//		Employee found = employeeRepository.findByEmpPAN(employee.getEmpPAN());
+		Employee found = employeeRepository.findByEmpEmailId(employee.getEmpEmailId());
+		
+		if(found!=null && found.getEmpId()!=employee.getEmpId())
+		{
+			String errorMessage = "email already registered... Cannot update !!";
+			logger.error(errorMessage, EmailAlreadyRegisteredException.class);
+			throw new EmailAlreadyRegisteredException(errorMessage);
+		}
+		
+//		LoginDetails loginDetails = loginRepository.findByUserName(employee.getLoginDetails().getUserName());
 //		
-//		if(found!=null && found.getEmpId()!=employee.getEmpId())
+//		if(loginDetails!=null && loginDetails.getId()!=employee.getLoginDetails().getId())
 //		{
-//			String errorMessage = String.format("pan : %s already registered... Cannot update!", employee.getEmpPAN());
-//			logger.error(errorMessage, PANAlreadyRegisteredException.class);
-//			throw new PANAlreadyRegisteredException(errorMessage);
+//			String errorMessage = "username already taken!!";
+//			logger.error(errorMessage, UsernameAlreadyExistException.class);
+//			throw new UsernameAlreadyExistException(errorMessage);
 //		}
 //		
-//		foundEmployee.setEmpDesignation(employee.getEmpDesignation());
-//		foundEmployee.setEmpDomain(employee.getEmpDomain());
+		foundEmployee.setEmpDesignation(employee.getEmpDesignation());
+		foundEmployee.setEmpDomain(employee.getEmpDomain());
+		
+		foundEmployee.setEmpName(employee.getEmpName());
+		foundEmployee.setEmpDOB(employee.getEmpDOB());
+		foundEmployee.setEmpDOJ(employee.getEmpDOJ());
+		
+		foundEmployee.setEmpEmailId(employee.getEmpEmailId());
+		
 		foundEmployee.setEmpPAN(employee.getEmpPAN());
+		
+		foundEmployee.setEmpSalary(employee.getEmpSalary());
+		
+		LoginDetails ld = foundEmployee.getLoginDetails();
+		
+		ld.setRole(employee.getLoginDetails().getRole());
+		
+		foundEmployee.setLoginDetails(ld);
+//		
+//		foundEmployee.setEmpName(employee.getEmpName());
+//		foundEmployee.setEmpDOB(employee.getEmpDOB());
+		
 		
 		
 		

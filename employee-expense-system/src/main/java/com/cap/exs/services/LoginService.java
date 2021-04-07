@@ -29,9 +29,9 @@ public class LoginService implements ILoginService{
 	public LoginDetails addDetails(LoginDetails details) {
 	LoginDetails loginDetails = loginRepository.findByUserName(details.getUserName());
 	
-	if(loginDetails!=null)
+	if(loginDetails!=null && loginDetails.getId()!=details.getId())
 	{
-		String errorMessage = String.format("username %s already taken!!", details.getUserName());
+		String errorMessage = "username already taken!!";
 		logger.error(errorMessage, UsernameAlreadyExistException.class);
 		throw new UsernameAlreadyExistException(errorMessage);
 	}
