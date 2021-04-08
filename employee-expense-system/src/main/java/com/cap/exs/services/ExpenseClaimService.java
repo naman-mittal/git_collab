@@ -172,4 +172,15 @@ public class ExpenseClaimService implements IExpenseClaimService {
 		claim.setStatus("Approved");
 		
 	}
+	
+	@Transactional
+	public void rejectClaim(ExpenseClaim expenseClaim)
+	{
+		
+		ExpenseClaim claim = this.fetchExpenseClaimById(expenseClaim.getExpenseCodeId());
+		
+		claim.setStatus("Rejected");
+		
+	}
+	
 }

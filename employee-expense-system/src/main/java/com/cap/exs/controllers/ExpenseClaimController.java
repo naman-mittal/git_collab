@@ -242,7 +242,7 @@ public class ExpenseClaimController {
 	
 		@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
 		@PutMapping("/expenseClaim/approve/{id}")
-		@ApiOperation(value = "Get all Expense Claims by Employee", response = List.class)
+		@ApiOperation(value = "Approve Claim", response = ResponseEntity.class)
 		@ApiResponses(value = {
 	            @ApiResponse(code = 200, message = "Successfully retrieved all expense claims"),
 	            @ApiResponse(code = 400, message = "Check your input parameters"),
@@ -258,6 +258,26 @@ public class ExpenseClaimController {
 			
 			expenseClaimService.approveClaim(expenseClaim);
 			return ResponseEntity.ok(new MessageResponse("Claim Approved"));
+		}
+		
+		@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
+		@PutMapping("/expenseClaim/reject/{id}")
+		@ApiOperation(value = "Reject Claim", response = ResponseEntity.class)
+		@ApiResponses(value = {
+	            @ApiResponse(code = 200, message = "Successfully retrieved all expense claims"),
+	            @ApiResponse(code = 400, message = "Check your input parameters"),
+	            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+	            @ApiResponse(code = 404, message = "No expense claims found"),
+	            @ApiResponse(code = 500, message = "Application failed to process the request")
+	    })
+		@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public ResponseEntity<MessageResponse> rejectClaim(@PathVariable("id") @Positive int expenseClaimId){
+			
+			ExpenseClaim expenseClaim = new ExpenseClaim();
+			expenseClaim.setExpenseCodeId(expenseClaimId);
+			
+			expenseClaimService.rejectClaim(expenseClaim);
+			return ResponseEntity.ok(new MessageResponse("Claim Rejected"));
 		}
 	
 		/**
