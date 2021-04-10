@@ -86,7 +86,7 @@ public class ExpenseClaimController {
 	 * 
 	 */
 	
-	@PreAuthorize("hasRole('USER')")
+	@PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MANAGER')")
 	@PostMapping("/expenseClaim")
 	@ApiOperation(value = "Add expense claim", response = ExpenseClaim.class)
 	@ApiResponses(value = {

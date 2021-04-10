@@ -156,3 +156,74 @@
 2021-04-10 16:33:32.811  WARN 3916 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseClaimNotFoundException: No Claims Records Found!!]
 2021-04-10 16:35:54.808  INFO 3916 --- [Thread-6] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 2021-04-10 16:35:54.915  INFO 3916 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-10 16:35:55.477  INFO 3916 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-10 16:35:55.547  INFO 3916 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-04-10 16:36:22.161  INFO 3916 --- [restartedMain] c.c.e.EmployeeExpenseSystemApplication   : Starting EmployeeExpenseSystemApplication using Java 1.8.0_271 on malware with PID 3916 (C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Git\git_collab\employee-expense-system\bin\main started by Naman Mittal in C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Git\git_collab\employee-expense-system)
+2021-04-10 16:36:22.161  INFO 3916 --- [restartedMain] c.c.e.EmployeeExpenseSystemApplication   : No active profile set, falling back to default profiles: default
+2021-04-10 16:36:25.060  INFO 3916 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-10 16:36:25.327  INFO 3916 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 264 ms. Found 6 JPA repository interfaces.
+2021-04-10 16:36:25.840  INFO 3916 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@20dd6be7' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-10 16:36:25.841  INFO 3916 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-10 16:36:27.084  INFO 3916 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-04-10 16:36:27.085  INFO 3916 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-10 16:36:27.085  INFO 3916 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-04-10 16:36:27.192  INFO 3916 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-10 16:36:27.193  INFO 3916 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5017 ms
+2021-04-10 16:36:27.301  WARN 3916 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-10 16:36:28.028  INFO 3916 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-10 16:36:28.071  INFO 3916 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2021-04-10 16:36:28.189  INFO 3916 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2021-04-10 16:36:28.203  INFO 3916 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-04-10 16:36:31.622  INFO 3916 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-10 16:36:31.623  INFO 3916 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-10 16:36:32.345  INFO 3916 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-04-10 16:36:32.971  INFO 3916 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-04-10 16:36:33.024  INFO 3916 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/v2/api-docs'] with []
+2021-04-10 16:36:33.025  INFO 3916 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/ui'] with []
+2021-04-10 16:36:33.025  INFO 3916 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources/**'] with []
+2021-04-10 16:36:33.025  INFO 3916 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/security'] with []
+2021-04-10 16:36:33.026  INFO 3916 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-04-10 16:36:33.026  INFO 3916 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/webjars/**'] with []
+2021-04-10 16:36:33.162  INFO 3916 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@29e67de0, org.springframework.security.web.context.SecurityContextPersistenceFilter@25875a3f, org.springframework.security.web.header.HeaderWriterFilter@4a3586f6, org.springframework.web.filter.CorsFilter@59e39b28, org.springframework.security.web.authentication.logout.LogoutFilter@11f0e792, com.cap.exs.security.jwt.AuthTokenFilter@187fbb75, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5dd44ef1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3b30718b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4b1354ab, org.springframework.security.web.session.SessionManagementFilter@48bfb07d, org.springframework.security.web.access.ExceptionTranslationFilter@50b503d5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2daf70fc]
+2021-04-10 16:36:33.257  INFO 3916 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-10 16:36:33.365  INFO 3916 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-04-10 16:36:33.371  INFO 3916 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-10 16:36:33.384  INFO 3916 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-04-10 16:36:33.442  INFO 3916 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-04-10 16:36:33.810  INFO 3916 --- [restartedMain] c.c.e.EmployeeExpenseSystemApplication   : Started EmployeeExpenseSystemApplication in 12.121 seconds (JVM running for 26742.861)
+2021-04-10 16:36:33.814  INFO 3916 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-04-10 16:38:14.024  INFO 3916 --- [Thread-23] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-10 16:38:14.028  INFO 3916 --- [Thread-23] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-10 16:38:14.029  INFO 3916 --- [Thread-23] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2021-04-10 16:38:14.038  INFO 3916 --- [Thread-23] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2021-04-10 16:38:14.364  INFO 3916 --- [restartedMain] c.c.e.EmployeeExpenseSystemApplication   : Starting EmployeeExpenseSystemApplication using Java 1.8.0_271 on malware with PID 3916 (C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Git\git_collab\employee-expense-system\bin\main started by Naman Mittal in C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Git\git_collab\employee-expense-system)
+2021-04-10 16:38:14.365  INFO 3916 --- [restartedMain] c.c.e.EmployeeExpenseSystemApplication   : No active profile set, falling back to default profiles: default
+2021-04-10 16:38:14.983  INFO 3916 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-10 16:38:15.076  INFO 3916 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 92 ms. Found 6 JPA repository interfaces.
+2021-04-10 16:38:15.252  INFO 3916 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@4732b30a' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-10 16:38:15.254  INFO 3916 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-10 16:38:16.183  INFO 3916 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-04-10 16:38:16.184  INFO 3916 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-10 16:38:16.184  INFO 3916 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-04-10 16:38:16.246  INFO 3916 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-10 16:38:16.247  INFO 3916 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1878 ms
+2021-04-10 16:38:16.296  WARN 3916 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-10 16:38:16.368  INFO 3916 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-10 16:38:16.377  INFO 3916 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2021-04-10 16:38:16.429  INFO 3916 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2021-04-10 16:38:16.429  INFO 3916 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-04-10 16:38:18.279  INFO 3916 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-10 16:38:18.280  INFO 3916 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-10 16:38:18.444  INFO 3916 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-04-10 16:38:18.902  INFO 3916 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-04-10 16:38:18.928  INFO 3916 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/v2/api-docs'] with []
+2021-04-10 16:38:18.928  INFO 3916 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/ui'] with []
+2021-04-10 16:38:18.928  INFO 3916 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources/**'] with []
+2021-04-10 16:38:18.928  INFO 3916 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/security'] with []
+2021-04-10 16:38:18.929  INFO 3916 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-04-10 16:38:18.929  INFO 3916 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/webjars/**'] with []
+2021-04-10 16:38:18.992  INFO 3916 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@29dc4418, org.springframework.security.web.context.SecurityContextPersistenceFilter@736646d8, org.springframework.security.web.header.HeaderWriterFilter@7b27b691, org.springframework.web.filter.CorsFilter@1b24865a, org.springframework.security.web.authentication.logout.LogoutFilter@1b1343, com.cap.exs.security.jwt.AuthTokenFilter@7e453517, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@17d60471, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5183ab24, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4e8ef0af, org.springframework.security.web.session.SessionManagementFilter@8f31d4d, org.springframework.security.web.access.ExceptionTranslationFilter@775260cd, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3577b1b3]
+2021-04-10 16:38:19.033  INFO 3916 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-10 16:38:19.124  INFO 3916 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-04-10 16:38:19.125  INFO 3916 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-10 16:38:19.127  INFO 3916 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
