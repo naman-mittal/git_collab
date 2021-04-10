@@ -77,3 +77,82 @@
 2021-04-10 15:21:55.985 ERROR 3916 --- [http-nio-8080-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: update or delete on table "employee" violates foreign key constraint "fkoxjhsuq7e9sp284kdtl0p4avx" on table "expense_claim"
   Detail: Key (emp_id)=(26) is still referenced from table "expense_claim".
 2021-04-10 15:21:55.985  INFO 3916 --- [http-nio-8080-exec-3] o.h.e.j.b.internal.AbstractBatchImpl     : HHH000010: On release of batch it still contained JDBC statements
+2021-04-10 15:21:55.986 ERROR 3916 --- [http-nio-8080-exec-3] com.cap.exs.services.EmployeeService     : Cannot delete! Expense claim exist for employee = Employee [empId=26, empName=Riya Gupta, empPAN=RIYAG1234T, empDesignation=null, empDomain=null, empDOJ=01/01/1970, empDOB=04/18/1999, empSalary=null, empEmailId=riya@gmail.com, loginDetails=LoginDetails [id=26, userName=riyag, password=$2a$10$f1OnUxDyT0.yyCRIPepDju6pEFW/t2GTImGqe/KwgSMFZQTI3WUam, role=null]]
+2021-04-10 15:21:55.988  WARN 3916 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseClaimAssociatedException: Cannot delete! Expense claim exist for employee = Employee [empId=26, empName=Riya Gupta, empPAN=RIYAG1234T, empDesignation=null, empDomain=null, empDOJ=01/01/1970, empDOB=04/18/1999, empSalary=null, empEmailId=riya@gmail.com, loginDetails=LoginDetails [id=26, userName=riyag, password=$2a$10$f1OnUxDyT0.yyCRIPepDju6pEFW/t2GTImGqe/KwgSMFZQTI3WUam, role=null]]]
+2021-04-10 16:02:42.844  WARN 3916 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=19m19s518ms306µs696ns).
+2021-04-10 16:09:35.404  WARN 3916 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m22s562ms252µs563ns).
+2021-04-10 16:09:44.285  WARN 3916 --- [http-nio-8080-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23503
+2021-04-10 16:09:44.285 ERROR 3916 --- [http-nio-8080-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: update or delete on table "project" violates foreign key constraint "fkhynx4lrjapcgaj5fdg6x4otic" on table "expense_claim"
+  Detail: Key (project_code)=(3) is still referenced from table "expense_claim".
+2021-04-10 16:09:44.286  INFO 3916 --- [http-nio-8080-exec-5] o.h.e.j.b.internal.AbstractBatchImpl     : HHH000010: On release of batch it still contained JDBC statements
+2021-04-10 16:09:44.287 ERROR 3916 --- [http-nio-8080-exec-5] com.cap.exs.services.ProjectService      : Cannot delete! Expense claim exist for project = Project [projectCode=3, projectDescription=basic spa using react, startDate=2021-03-01, endDate=2021-04-12] 
+2021-04-10 16:09:44.289  WARN 3916 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseClaimAssociatedException: Cannot delete! Expense claim exist for project = Project [projectCode=3, projectDescription=basic spa using react, startDate=2021-03-01, endDate=2021-04-12] ]
+2021-04-10 16:10:26.489 ERROR 3916 --- [http-nio-8080-exec-5] com.cap.exs.services.ProjectService      : No Projects Found
+2021-04-10 16:10:26.492  WARN 3916 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ProjectNotFoundException: No Projects Found]
+2021-04-10 16:10:36.729 ERROR 3916 --- [http-nio-8080-exec-1] com.cap.exs.services.ProjectService      : No Projects Found
+2021-04-10 16:10:36.731  WARN 3916 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ProjectNotFoundException: No Projects Found]
+2021-04-10 16:10:37.570 ERROR 3916 --- [http-nio-8080-exec-2] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:10:37.572  WARN 3916 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:11:24.164 ERROR 3916 --- [http-nio-8080-exec-9] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:11:24.165  WARN 3916 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:12:02.429 ERROR 3916 --- [http-nio-8080-exec-10] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:12:02.431  WARN 3916 --- [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:12:09.468 ERROR 3916 --- [http-nio-8080-exec-4] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:12:09.470  WARN 3916 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:12:12.102 ERROR 3916 --- [http-nio-8080-exec-6] com.cap.exs.services.ProjectService      : No Projects Found
+2021-04-10 16:12:12.103  WARN 3916 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ProjectNotFoundException: No Projects Found]
+2021-04-10 16:12:27.452 ERROR 3916 --- [http-nio-8080-exec-1] com.cap.exs.services.ProjectService      : No Projects Found
+2021-04-10 16:12:27.454  WARN 3916 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ProjectNotFoundException: No Projects Found]
+2021-04-10 16:12:33.461 ERROR 3916 --- [http-nio-8080-exec-2] com.cap.exs.services.ProjectService      : No Projects Found
+2021-04-10 16:12:33.462  WARN 3916 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ProjectNotFoundException: No Projects Found]
+2021-04-10 16:12:35.452 ERROR 3916 --- [http-nio-8080-exec-5] com.cap.exs.services.ProjectService      : No Projects Found
+2021-04-10 16:12:35.454  WARN 3916 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ProjectNotFoundException: No Projects Found]
+2021-04-10 16:12:39.668 ERROR 3916 --- [http-nio-8080-exec-7] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:12:39.670  WARN 3916 --- [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:12:46.208 ERROR 3916 --- [http-nio-8080-exec-10] com.cap.exs.services.ProjectService      : No Projects Found
+2021-04-10 16:12:46.209  WARN 3916 --- [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ProjectNotFoundException: No Projects Found]
+2021-04-10 16:12:59.520 ERROR 3916 --- [http-nio-8080-exec-4] com.cap.exs.services.ProjectService      : No Projects Found
+2021-04-10 16:12:59.525  WARN 3916 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ProjectNotFoundException: No Projects Found]
+2021-04-10 16:13:14.903 ERROR 3916 --- [http-nio-8080-exec-6] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:13:14.924  WARN 3916 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:13:27.439 ERROR 3916 --- [http-nio-8080-exec-1] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:13:27.441  WARN 3916 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:14:16.520 ERROR 3916 --- [http-nio-8080-exec-5] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:14:16.522  WARN 3916 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:14:18.901 ERROR 3916 --- [http-nio-8080-exec-9] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:14:18.903  WARN 3916 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:15:22.587 ERROR 3916 --- [http-nio-8080-exec-10] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:15:22.590  WARN 3916 --- [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:15:33.976 ERROR 3916 --- [http-nio-8080-exec-4] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:15:33.979  WARN 3916 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:19:17.102 ERROR 3916 --- [http-nio-8080-exec-7] com.cap.exs.services.ProjectService      : No Projects Found
+2021-04-10 16:19:17.104  WARN 3916 --- [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ProjectNotFoundException: No Projects Found]
+2021-04-10 16:21:36.584  WARN 3916 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.InvalidEndDateException: End date should be the date after start date]
+2021-04-10 16:21:53.889 ERROR 3916 --- [http-nio-8080-exec-1] com.cap.exs.services.ProjectService      : No Projects Found
+2021-04-10 16:21:53.891  WARN 3916 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ProjectNotFoundException: No Projects Found]
+2021-04-10 16:22:46.992 ERROR 3916 --- [http-nio-8080-exec-6] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:22:46.994  WARN 3916 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:23:00.361 ERROR 3916 --- [http-nio-8080-exec-7] com.cap.exs.services.ProjectService      : No Projects Found
+2021-04-10 16:23:00.363  WARN 3916 --- [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ProjectNotFoundException: No Projects Found]
+2021-04-10 16:23:04.166 ERROR 3916 --- [http-nio-8080-exec-3] com.cap.exs.services.ProjectService      : No Projects Found
+2021-04-10 16:23:04.168  WARN 3916 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ProjectNotFoundException: No Projects Found]
+2021-04-10 16:24:17.564 ERROR 3916 --- [http-nio-8080-exec-9] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:24:17.566  WARN 3916 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:26:37.405 ERROR 3916 --- [http-nio-8080-exec-9] c.cap.exs.services.ExpenseClaimService   : no Expense claims  found for employee :  Dhruv Mittal
+2021-04-10 16:26:37.465  WARN 3916 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseClaimNotFoundException: no Expense claims  found for employee :  Dhruv Mittal]
+2021-04-10 16:27:17.352 ERROR 3916 --- [http-nio-8080-exec-8] c.cap.exs.services.ExpenseClaimService   : no Expense claims  found for employee :  Dhruv Mittal
+2021-04-10 16:27:17.354  WARN 3916 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseClaimNotFoundException: no Expense claims  found for employee :  Dhruv Mittal]
+2021-04-10 16:27:51.470 ERROR 3916 --- [http-nio-8080-exec-7] c.cap.exs.services.ExpenseClaimService   : no Expense claims  found for employee :  Dhruv Mittal
+2021-04-10 16:27:51.471  WARN 3916 --- [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseClaimNotFoundException: no Expense claims  found for employee :  Dhruv Mittal]
+2021-04-10 16:27:54.470 ERROR 3916 --- [http-nio-8080-exec-4] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:27:54.472  WARN 3916 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:28:15.146 ERROR 3916 --- [http-nio-8080-exec-2] c.cap.exs.services.ExpenseClaimService   : No Claims Records Found!!
+2021-04-10 16:28:15.147  WARN 3916 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseClaimNotFoundException: No Claims Records Found!!]
+2021-04-10 16:28:20.468 ERROR 3916 --- [http-nio-8080-exec-9] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:28:20.469  WARN 3916 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:33:04.521 ERROR 3916 --- [http-nio-8080-exec-2] com.cap.exs.services.ExpenseService      : No Expenses found!!
+2021-04-10 16:33:04.523  WARN 3916 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseNotFoundException: No Expenses found!!]
+2021-04-10 16:33:32.809 ERROR 3916 --- [http-nio-8080-exec-4] c.cap.exs.services.ExpenseClaimService   : No Claims Records Found!!
+2021-04-10 16:33:32.811  WARN 3916 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cap.exs.exceptions.ExpenseClaimNotFoundException: No Claims Records Found!!]
+2021-04-10 16:35:54.808  INFO 3916 --- [Thread-6] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-10 16:35:54.915  INFO 3916 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
