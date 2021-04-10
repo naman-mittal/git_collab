@@ -129,7 +129,7 @@ public class ExpenseClaimController {
 	 * @throws {@link MethodArgumentNotValidException}
 	 * 
 	 */
-	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
+	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER') or hasRole('USER')")
 	@GetMapping("/expenseClaim/{id}")
 	@ApiOperation(value = "Retrieve expense claim using its Id", response = ExpenseClaim.class)
 	@ApiResponses(value = {
@@ -155,7 +155,7 @@ public class ExpenseClaimController {
 	 * 
 	 */
 	
-	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
+	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER') or hasRole('USER')")
 	@PutMapping("/expenseClaim")
 	@ApiOperation(value = "Upadate the expense claim", response = ExpenseClaim.class)
 	@ApiResponses(value = {
